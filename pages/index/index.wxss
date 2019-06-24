@@ -1,0 +1,86 @@
+
+.radius{
+  border-radius: 30rpx;
+}
+
+.padding-sm{
+  padding: 8rpx 24rpx;
+}
+
+.cu-form-group{
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10rpx;
+}
+
+.station-search-group{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 40rpx 50rpx 0;
+}
+
+.station-info{
+  flex: 3;
+  background-color: #FFF;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  font-size: 36rpx;
+}
+
+.station-info .iconfont{
+  margin-right: 10rpx;
+}
+
+.station-arrow{
+  flex: 1;
+  text-align: center;
+}
+
+.cu-btn{
+  width: 96%;
+  margin: 0 auto;
+}
+
+.keyboard{
+  z-index: 1025;
+  width:100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #EAEAEA;
+}
+
+.letter{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;  
+}
+
+ .letter-view{
+  border: solid 1rpx #EAEAEA;
+  margin: 10rpx;
+  background-color: #FFFFFF;
+  flex: 0 0 160rpx;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+} 
+
+.key-number{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;
+  margin: 30rpx auto;
+}
+
+.number-view{
+  border: solid 1rpx #EAEAEA;
+  margin: 10rpx;
+  background-color: #FFFFFF;
+  flex: 0 0 150rpx;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}

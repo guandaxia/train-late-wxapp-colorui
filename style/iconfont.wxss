@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1204178 */
+  src: url('//at.alicdn.com/t/font_1204178_t555c6zhn1.eot');
+  src: url('//at.alicdn.com/t/font_1204178_t555c6zhn1.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1204178_t555c6zhn1.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1204178_t555c6zhn1.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1204178_t555c6zhn1.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1204178_t555c6zhn1.svg#iconfont') format('svg');
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 32rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.i-arrow::before {
+  content: "\e743";
+}
+
+.i-end::before {
+  content: "\e631";
+  color: #FC0D1B;
+  font-size: 40rpx;
+}
+
+.i-start::before {
+  content: "\e62f";
+  color: #3E9B27;
+  font-size: 40rpx;
+}
+
+.i-top-arrow::before{
+  content: "\e622";
+  font-size: 28rpx;
+  padding: 0;
+}
+
+.i-down-arrow::before{
+  content: "\e60b";
+  font-size: 28rpx;
+  padding: 0;
+}

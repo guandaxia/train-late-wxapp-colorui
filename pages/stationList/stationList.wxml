@@ -1,0 +1,75 @@
+<!--pages/stationList/stationList.wxml-->
+<cu-custom isCustom bgColor="bg-gradual-blue">
+  <view slot="content">站点列表</view>
+</cu-custom>
+<form report-submit bindsubmit="formSubmit">
+  <view class="cu-bar padding-top padding-bottom bg-white search fixed" style="top:{{CustomBar}}px;">
+    <view class="search-form round">
+      <text class="icon-search"></text>
+      <input type="text" placeholder="中文/拼音/首字母" confirm-type="搜索" name="searchText" bindinput='bindinput' value='{{searchText}}' focus></input>
+      <text class="icon-roundclosefill text-gray"  wx-if="{{searchText}}" catchtap='clearInput'></text>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-gradual-green shadow-blur round" form-type="submit">搜索</button>
+    </view>
+  </view>
+</form>
+<view wx:if="{{searchList.length}}" class="text-box">
+  <view bindtouchstart="bindSearchResult" data-info="{{i}}" wx:for="{{searchList}}"  wx:key="{{i.station_code}}" wx:for-item="i">
+    <view bindtap="selectStation" data-station="{{i}}">{{i.station_name}}</view>
+  </view>
+</view>
+<block wx:else>
+  <view wx:if="{{hotStationList.length}}" class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="icon-title text-cyan "></text> 常用
+    </view>
+  </view>
+  <view class="cu-list grid col-3">
+    <view class="cu-item" wx:for="{{hotStationList}}" wx:key="{{item.station_code}}" >
+      <text bindtap="selectStation" data-station="{{item}}">{{item.station_name}}</text>
+    </view>
+  </view>
+<view wx:if="{{historyStationList.length}}" class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="icon-title text-orange "></text> 历史
+    </view>
+  </view>
+  <view class="cu-list menu">
+    <view class="cu-item" wx:for="{{historyStationList}}" wx:key="{{item.station_code}}">
+      <view class="content" bindtap="selectStation" data-station="{{item}}">
+        <text class="text-grey"  >{{item.station_name}}</text>
+      </view>
+    </view>
+  </view>
+
+
+<!-- <scroll-view scroll-y class="indexes margin-top" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" bindscroll="scroll" scroll-with-animation="true" enable-back-to-top="true" bindscrolltolower="scrolltolower" bindscrolltoupper="scrolltoupper"> -->
+  <!-- <view class="padding-sm " id="indexes-#" data-index="#">历史</view>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item " wx:for="{{historyStationInfo}}" wx:key wx:for-index="sub"  wx:for-item="stationInfo">
+        <view class="content" bindtap="selectStation" data-station="{{stationInfo}}">
+          <view class='text-grey'>{{stationInfo.station_name}}</view>
+        </view>
+      </view>
+    </view> -->
+  <!-- <block wx:for="{{list}}" wx:key>
+    <view class="padding-sm indexItem-{{item.character}}" id="indexes-{{item.character}}" data-index="{{item.character}}">{{item.character}}</view>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item" wx:for="{{item.station_info}}" wx:key wx:for-index="sub"  wx:for-item="stationInfo">
+        <view class="content" bindtap="selectStation" data-station="{{stationInfo}}">
+          <view class="text-grey" >{{stationInfo.station_name}}</view>
+        </view>
+      </view>
+    </view>
+  </block> -->
+<!-- </scroll-view> -->
+<!-- <view class="indexBar" style="height:calc(100vh - {{CustomBar}}px - 50px)">
+  <view class="indexBar-box" bindtouchstart="tStart" bindtouchend="tEnd" catchtouchmove="tMove">
+    <view class="indexBar-item" wx:for="{{indexBarList}}" wx:key id="{{item}}" bindtouchstart="getCur" bindtouchend="setCur">{{item}}</view>
+  </view>
+</view>
+<view hidden="{{hidden}}" class="indexToast">
+  {{listCur}}
+</view> -->
+</block>

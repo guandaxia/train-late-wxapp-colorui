@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/list",
+    "pages/stationList/stationList",
+    "pages/trainTime/trainTime"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "火车到哪了",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

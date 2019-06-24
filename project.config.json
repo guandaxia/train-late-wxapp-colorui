@@ -1,0 +1,92 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.6",
+	"appid": "wxe99ef1c0b88d7a7b",
+	"projectname": "train-late",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionRoot": "functions/",
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"miniprogramRoot": "/",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": -1,
+					"name": "线路详情",
+					"pathName": "pages/list/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "站点列表",
+					"pathName": "pages/stationList/stationList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "trainTime",
+					"pathName": "pages/trainTime/trainTime",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "常用",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "更新日志",
+					"pathName": "pages/updateLog/updateLog",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购票日历",
+					"pathName": "pages/date/date",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,8 @@
+var dateFilter = function (value) {
+  console.log(value)
+  return value
+}
+
+module.exports = {
+  dateFilter: dateFilter
+}

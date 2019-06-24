@@ -1,0 +1,11 @@
+/* pages/trainTime/trainTime.wxss */
+.arrow{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: -5rpx;
+}
+
+.arrow image{
+  width: 100%;
+  height: 100%;
+}
