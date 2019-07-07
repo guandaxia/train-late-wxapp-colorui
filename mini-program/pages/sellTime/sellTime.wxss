@@ -1,0 +1,9 @@
+/* mini-program/pages/sellTime/sellTime.wxss */
+Page{
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+}

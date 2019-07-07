@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "keyboard": "/component/keyboard/keyboard"
+  },
+  "navigationBarTitleText": "检票口查询"
+}

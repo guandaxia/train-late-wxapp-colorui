@@ -1,0 +1,29 @@
+<!--pages/date/date.wxml-->
+<wxs src="../../filter/filter.wxs" module="filter"></wxs>
+<cu-custom isCustom bgColor="bg-gradual-blue" ><view slot="backText">返回</view>
+<view slot="content">购票日历</view></cu-custom>
+
+<view class="container-fluid">
+  <calendar 
+    weeks-type="cn" 
+    cell-size="30" 
+    show-more-days="{{true}}"
+    calendar-style="calendar" 
+    header-style="calendar-header" 
+    board-style="calendar-board" 
+    days-color="{{days_style}}" 
+    binddayClick="dayClick"
+    bindprevMonth="monthChange"
+    bindnextMonth="monthChange"
+    />
+</view>
+<view class='margin-top padding bg-white solid-bottom' >
+<view>{{selectDay}}最晚可购买{{newDay}}车票</view>
+</view>
+<view class='margin-top padding-sm bg-white solid-bottom text-sm' >
+<view>目前车票预售期为{{buyTicketCount}}天</view>
+</view>
+
+<view class='bottom'>
+  <ad unit-id="adunit-8bfb87737f8b0c2c"></ad>
+</view>

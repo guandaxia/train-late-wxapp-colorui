@@ -1,0 +1,79 @@
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">火车到哪了</view>
+</cu-custom>
+<view catchtap='pageTap'>
+  <view>
+    <form report-submit bindsubmit="formSubmit">
+      <scroll-view scroll-x class="bg-white nav text-center ">
+        <view class="cu-item {{index==tabCur?'text-blue cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+          {{tabNav[index]}}
+        </view>
+      </scroll-view>
+      <view style='margin-top:40rpx;'>
+        <view wx:if="{{tabCur == 0}}" class="cu-form-group margin-top">
+        <view class="title">车次</view>
+        <input name="train_code" placeholder="请输入车次" catchtap="bindKeyInput" disabled value='{{input}}'></input>
+        <text class="icon-roundclosefill text-gray" wx-if="{{showClear}}" catchtap='clearInput'></text>
+      </view>
+      <block wx:else>
+      <view class="station-search-group">
+        <view class='station-info' catchtap="selectStation" data-type='0'>
+          <text class='iconfont i-start'></text>
+          <text wx:if="{{selectStartStation}}">{{selectStartStation.stationName}}</text>
+          <text wx:else style='color:#CCC;'>起点</text>
+        </view>
+        <view class='station-arrow' bindtap='arrowTap'>
+          <text class="iconfont i-arrow"></text>
+        </view>
+        <view class='station-info' catchtap="selectStation" data-type='1'>
+          <text class='iconfont i-end'></text>
+          <text wx:if="{{selectEndStation}}">{{selectEndStation.stationName}}</text>
+          <text wx:else style='color:#CCC;'>终点</text>
+        </view>
+      </view>
+      </block>
+      </view>
+      <view class="padding">
+        <button class="cu-btn block bg-green margin-tb-sm lg"  form-type="submit">查询</button>
+      </view>
+    </form>
+    <block >
+    <!-- <view class='text-blue text-center padding text-lg'>查询历史</view> -->
+    <view class="flex padding justify-center align-center text-lg" catchtap='query' data-info="{{item}}" wx:for="{{queryHistory}}" wx:key="{{item.train_code}}">
+      <view class='padding-sm'>{{item.train_code}}</view>
+      <view class='padding-sm'>{{item.start}} -- {{item.end}}</view>
+    </view>
+    </block>
+  </view>
+
+  <!-- <view class=" text-lg padding text-center">
+    <text class='text-blue'>不知道车次？</text>
+  </view> -->
+  <keyboard showKeyboard="{{showKeyboard}}"  inputValue="{{input}}" bind:keyboardValue="keyboardValue" bind:hideKeyboard="hideKeyboard"></keyboard>
+  <!-- <view class='keyboard' wx-if="{{showKeyboard}}">
+    <view class='letter'> 
+      <view class='letter-view' data-letter='C' catchtap='letterButton'>C 城际</view>
+      <view class='letter-view' data-letter='D' catchtap='letterButton'>D 动车</view>
+      <view class='letter-view' data-letter='G' catchtap='letterButton'>G 高铁</view>
+      <view class='letter-view' data-letter='L' catchtap='letterButton'>L 临客</view>
+      <view class='letter-view' data-letter='K' catchtap='letterButton'>K 快速</view>
+      <view class='letter-view' data-letter='T' catchtap='letterButton'>T 特快</view>
+      <view class='letter-view' data-letter='Y' catchtap='letterButton'>Y 旅游</view>
+      <view class='letter-view' data-letter='Z' catchtap='letterButton'>Z 直达</view>
+    </view>
+    <view class='key-number'>
+      <view class='number-view' data-number='1' catchtap='numberButton'>1</view>
+      <view class='number-view' data-number='2' catchtap='numberButton'>2</view>
+      <view class='number-view' data-number='3' catchtap='numberButton'>3</view>
+      <view class='number-view' catchtap='delInput'>删除</view>
+      <view class='number-view' data-number='4' catchtap='numberButton'>4</view>
+      <view class='number-view' data-number='5' catchtap='numberButton'>5</view>
+      <view class='number-view' data-number='6' catchtap='numberButton'>6</view>
+      <view class='number-view' data-number='0' catchtap='numberButton'>0</view>
+      <view class='number-view' data-number='7' catchtap='numberButton'>7</view>
+      <view class='number-view' data-number='8' catchtap='numberButton'>8</view>
+      <view class='number-view' data-number='9' catchtap='numberButton'>9</view>
+      <view class='number-view' catchtap='hideKeyboard'>隐藏</view>
+    </view>
+  </view> -->
+</view>

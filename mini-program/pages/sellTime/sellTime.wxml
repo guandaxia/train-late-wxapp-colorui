@@ -1,0 +1,32 @@
+<!--mini-program/pages/sellTime/sellTime.wxml-->
+<view class='content'>
+  <cu-custom isCustom bgColor="bg-gradual-blue">
+    <view slot="content">起售时间</view>
+  </cu-custom>
+  <view catchtap='pageTap'>
+    <form report-submit bindsubmit="formSubmit">
+      <view class="cu-form-group margin-top">
+        <view class="title train-code">车站</view>
+        <input name="station" placeholder="请选择车站" catchtap="bindKeyInput" disabled value='{{station.stationName}}'></input>
+      </view>
+      <view class="padding">
+        <button class="cu-btn block bg-green margin-tb-sm lg" form-type="submit">查询</button>
+      </view>
+    </form>
+  </view>
+
+  <view class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
+    <view class="cu-item" wx:for="{{stationList}}" wx:key="{{item._id}}">
+      <view class="content">
+        <text class="text-grey">{{item.station_name}}</text>
+      </view>
+      <view class="action">
+        <view>{{item.sell_time}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='margin-top'>
+  <ad unit-id="adunit-d70e7f630e07ced1"></ad>
+</view>

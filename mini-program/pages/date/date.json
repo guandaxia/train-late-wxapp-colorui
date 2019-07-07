@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "购票日历",
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar"
+  }
+}

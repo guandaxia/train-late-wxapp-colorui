@@ -1,0 +1,27 @@
+<!--componenent/keyboard/keyboard.wxml-->
+<view class='keyboard' wx-if="{{showKeyboard}}">
+  <view class='letter'> 
+    <view class='letter-view' data-letter='C' catchtap='letterButton'>C 城际</view>
+    <view class='letter-view' data-letter='D' catchtap='letterButton'>D 动车</view>
+    <view class='letter-view' data-letter='G' catchtap='letterButton'>G 高铁</view>
+    <view class='letter-view' data-letter='L' catchtap='letterButton'>L 临客</view>
+    <view class='letter-view' data-letter='K' catchtap='letterButton'>K 快速</view>
+    <view class='letter-view' data-letter='T' catchtap='letterButton'>T 特快</view>
+    <view class='letter-view' data-letter='Y' catchtap='letterButton'>Y 旅游</view>
+    <view class='letter-view' data-letter='Z' catchtap='letterButton'>Z 直达</view>
+  </view>
+  <view class='key-number'>
+    <view class='number-view' data-number='1' catchtap='numberButton'>1</view>
+    <view class='number-view' data-number='2' catchtap='numberButton'>2</view>
+    <view class='number-view' data-number='3' catchtap='numberButton'>3</view>
+    <view class='number-view' catchtap='delInput'>删除</view>
+    <view class='number-view' data-number='4' catchtap='numberButton'>4</view>
+    <view class='number-view' data-number='5' catchtap='numberButton'>5</view>
+    <view class='number-view' data-number='6' catchtap='numberButton'>6</view>
+    <view class='number-view' data-number='0' catchtap='numberButton'>0</view>
+    <view class='number-view' data-number='7' catchtap='numberButton'>7</view>
+    <view class='number-view' data-number='8' catchtap='numberButton'>8</view>
+    <view class='number-view' data-number='9' catchtap='numberButton'>9</view>
+    <view class='number-view' catchtap='hideKeyboard'>隐藏</view>
+  </view>
+</view>

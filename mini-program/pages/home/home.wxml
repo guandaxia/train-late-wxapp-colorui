@@ -1,0 +1,68 @@
+<!--pages/home/home.wxml-->
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">火车到哪了</view>
+</cu-custom>
+  <view class="cu-list menu card-menu margin-top margin-bottom-xl shadow-lg radius">
+    <!-- <view class="cu-item arrow">
+      <view class="content"
+            bindtap="CopyLink">
+        <text class="icon-noticefill text-blue"></text>
+        <text class="text-grey">官方公告</text>
+      </view>
+    </view> -->
+    <view class="cu-item arrow">
+      <navigator class="content"
+                 url="/pages/sellTime/sellTime"
+                 hover-class="none">
+        <text class="icon-timefill text-orange"></text>
+        <text class="text-grey">起售时间</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content"
+                 url="/pages/date/date"
+                 hover-class="none">
+        <text class="icon-calendar text-cyan"></text>
+        <text class="text-grey">购票日历</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content"
+                 url="/pages/ticketCheck/ticketCheck"
+                 hover-class="none">
+        <text class="icon-locationfill text-orange"></text>
+        <text class="text-grey">检票口查询</text>
+      </navigator>
+    </view>
+  </view>
+  <view class="cu-list menu card-menu margin-top margin-bottom-xl shadow-lg radius">
+    <!-- <view class="cu-item arrow">
+      <navigator class="content"
+                 url="/pages/about/log/log"
+                 hover-class="none">
+        <text class="icon-formfill text-green"></text>
+        <text class="text-grey">更新日志</text>
+      </navigator>
+    </view> -->
+    <view class="cu-item arrow">
+      <view class="content"
+            bindtap="showQrcode">
+        <text class="icon-appreciatefill text-red"></text>
+        <text class="text-grey">赞赏支持</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <view class="content"
+            bindtap="goUrl" data-url='setting'>
+        <text class="icon-settings text-black"></text>
+        <text class="text-grey">设置</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content"
+              open-type="feedback">
+        <text class="icon-writefill text-cyan"></text>
+        <text class="text-grey">意见反馈</text>
+      </button>
+    </view>
+  </view>

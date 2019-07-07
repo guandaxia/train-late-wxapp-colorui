@@ -1,0 +1,10 @@
+/* pages/ticketCheck/ticketCheck.wxss */
+/* .cu-form-group{
+  width: 90%;
+  margin: 50rpx auto;
+  border-radius: 10rpx;
+} */
+
+.train-code {
+  width: 520rpx;
+}

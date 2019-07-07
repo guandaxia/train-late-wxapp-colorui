@@ -13,7 +13,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.7.3",
 	"appid": "wxe99ef1c0b88d7a7b",
 	"projectname": "train-late",
 	"debugOptions": {
@@ -24,7 +24,7 @@
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionRoot": "functions/",
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-	"miniprogramRoot": "/",
+	"miniprogramRoot": "mini-program/",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -43,7 +43,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -84,6 +84,34 @@
 					"id": -1,
 					"name": "购票日历",
 					"pathName": "pages/date/date",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "设置",
+					"pathName": "pages/setting/setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "检票口查询",
+					"pathName": "pages/ticketCheck/ticketCheck",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "模拟更新",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "起售时间",
+					"pathName": "pages/sellTime/sellTime",
 					"scene": null
 				}
 			]

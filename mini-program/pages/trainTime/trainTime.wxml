@@ -1,0 +1,37 @@
+<!--pages/trainTime/trainTime.wxml-->
+<!--pages/list/list.wxml-->
+<cu-custom isCustom bgColor="bg-gradual-blue">
+  <view slot="content">{{title}}</view>
+</cu-custom>
+<view class="nav fixed flex align-center solid-bottom text-center bg-white" style="top:{{CustomBar}}px">
+  <block wx:for="{{menu}}">
+    <view class='padding-sm basis-sm flex align-center justify-center'>
+      <view>{{item.title}}</view>
+      <view class='arrow' bindtap='sortHandle' data-index='{{index}}'>
+        <image wx:if="{{item.sort == 1}}" src='/images/up.png'></image>
+        <image wx:elif="{{item.sort == 2}}" src='/images/down.png'></image>
+        <image wx:else src='/images/all.png'></image>
+      </view>
+    </view>
+  </block>
+  <view class='basis-sm'>
+    <view>操作</view>
+  </view>
+</view>
+<view style="margin-top:80rpx;" >
+<view wx:for="{{stationList}}" wx:key="{{item.station_train_code}}" class="flex padding-sm align-center text-lg solid-bottom bg-white text-center ">
+  <view class='padding-sm basis-sm'>{{item.station_train_code}}</view>
+  <view class='basis-sm'>
+    <view>{{item.start_time}}</view>
+  </view>
+  <view class='basis-sm'>
+    <view>{{item.arrive_time}}</view>
+  </view>
+  <view class='basis-sm'>
+    <button class="cu-btn bg-green " disabled="{{item.disabled}}" bindtap='search' data-train-code="{{item.station_train_code}}" type="">查询</button>
+  </view>
+</view>
+</view>
+<view class='margin-top ' wx:if="{{stationList.length}}">
+<ad unit-id="adunit-aa7ab7130d49cc57"></ad>
+</view>

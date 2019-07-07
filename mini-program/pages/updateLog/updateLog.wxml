@@ -1,0 +1,18 @@
+<!--pages/updateLog/updateLog.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}"><view slot="backText">返回</view>
+<view slot="content">日志</view></cu-custom>
+<view class="cu-timeline">
+  <view class="cu-item text-green">
+    <view class="bg-gradual-green content shadow-blur">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v2.0.0</view>
+        <view class="cu-tag line-white">2019/06/23</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.更新UI</view>
+        <view>2.增加根据车站查询车次</view>
+        <view>3.启用小程序云开发，优化速度</view>
+      </view>
+    </view>
+  </view>
+</view>

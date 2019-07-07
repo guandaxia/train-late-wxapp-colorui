@@ -1,0 +1,43 @@
+<!--pages/ticketCheck/ticketCheck.wxml-->
+<cu-custom isCustom bgColor="bg-gradual-blue"><view slot="backText">返回</view>
+  <view slot="content">检票口查询</view>
+</cu-custom>
+<view catchtap='pageTap'>
+  <form report-submit bindsubmit="formSubmit">
+    <view class="cu-form-group margin-top">
+      <view class="title train-code">车次</view>
+      <input name="train_code" placeholder="请输入车次" catchtap="bindKeyInput" disabled value='{{input}}'></input>
+      <text class="icon-roundclosefill text-gray" wx-if="{{showClear}}" catchtap='clearInput'></text>
+    </view>
+    <view class="cu-form-group">
+		<view class="title">乘车日期</view>
+      <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="dateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">乘车车站</view>
+      <picker bindchange="selectStation" value="{{index}}" range="{{stationList}}">
+        <view class="picker">
+          {{stationName || '请先输入车次'}}
+        </view>
+      </picker>
+    </view>
+    <view class="padding">
+        <button class="cu-btn block bg-green margin-tb-sm lg"  form-type="submit">查询</button>
+      </view>
+  </form>
+  <view class="cu-list menu card-menu margin-top margin-bottom-xl shadow-lg radius">
+    <view class="cu-item" wx:if="{{ticketCheck}}">
+      {{ticketCheck}}
+    </view>
+  </view>
+</view>
+<view class='ad-info'>
+<!-- <view class='line'>以下就是广告了哦</view> -->
+<ad unit-id="adunit-cde55deae650318c"></ad>
+</view>
+
+ <keyboard showKeyboard="{{showKeyboard}}"  inputValue="{{input}}" bind:keyboardValue="keyboardValue" bind:hideKeyboard="hideKeyboard"></keyboard>

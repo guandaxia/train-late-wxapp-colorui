@@ -1,0 +1,19 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+@import "./style/iconfont.wxss";
+
+.ad-info{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.line{
+  width: 90%;
+  /* padding: 0 30rpx 0; */
+  margin: 20rpx auto 30rpx;
+  line-height: 5rpx;
+  border-left: 180rpx solid #fff;
+  border-right: 180rpx solid #fff;
+  text-align: center;
+}

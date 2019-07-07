@@ -1,0 +1,20 @@
+<!--pages/setting/setting.wxml-->
+<cu-custom isCustom bgColor="bg-gradual-blue">
+  <view slot="content">设置</view>
+</cu-custom>
+<view class="cu-list menu margin-top">
+  <!-- <view class="cu-item">
+    <view class="content">
+      <text class="text-grey">关闭广告</text>
+    </view>
+    <view class="action">
+        <switch class="orange radius sm" bindchange="switchAd"></switch>
+      </view>
+  </view> -->
+  <view class="cu-item arrow" bindtap='clearCache'>
+    <view class="content">
+      <!-- <text class="icon-circlefill text-grey"></text> -->
+      <text class="text-grey">清除缓存</text>
+    </view>
+  </view>
+</view>
