@@ -65,4 +65,11 @@
         <text class="text-grey">意见反馈</text>
       </button>
     </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content"
+              open-type="contact">
+        <text class="icon-mail text-olive"></text>
+        <text class="text-grey">联系开发者</text>
+      </button>
+    </view>
   </view>
