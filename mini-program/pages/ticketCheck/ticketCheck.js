@@ -62,7 +62,11 @@ Page({
  * 用户点击右上角分享
  */
   onShareAppMessage: function () {
-    
+    return {
+      title: this.data.ticketCheck,
+      path: '/pages/ticketCheck/ticketCheck'
+    }
+
   },
 
   pageTap: function () {
@@ -76,7 +80,9 @@ Page({
     console.log('clear')
     this.setData({
       input: '',
-      showClear: false
+      showClear: false,
+      stationList: ['请先选择车次'],
+      stationName: ''
     })
   },
   bindKeyInput () {
@@ -98,13 +104,16 @@ Page({
     if (!checkTrainCode(input)) {
       return
     }
-
+    wx.showLoading({
+      title: '数据加载中'
+    })
     wx.cloud.callFunction({
       name: 'stationStopInfo',
       data: {
         trainCode: input,
       }
     }).then(res => {
+      wx.hideLoading()
       console.log(res.result)
 
       let stationList = []
@@ -119,7 +128,7 @@ Page({
         stationName: stationList[0]
       })
     }).catch(err => {
-
+      wx.hideLoading()
     })
     
   },
@@ -163,7 +172,9 @@ Page({
       })
       return
     }
-    
+    wx.showLoading({
+      title: '数据加载中'
+    })
     wx.cloud.callFunction({
       name: 'queryTicketCheck',
       data: {
