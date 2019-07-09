@@ -8,7 +8,8 @@
     "pages/date/date",
     "pages/setting/setting",
     "pages/ticketCheck/ticketCheck",
-    "pages/sellTime/sellTime"
+    "pages/sellTime/sellTime",
+    "pages/sellTicket/sellTicket"
   ],
   "window": {
     "backgroundTextStyle": "light",

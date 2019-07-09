@@ -34,6 +34,14 @@
         <text class="text-grey">检票口查询</text>
       </navigator>
     </view>
+    <view class="cu-item arrow">
+      <navigator class="content"
+                 url="/pages/sellTicket/sellTicket"
+                 hover-class="none">
+        <text class="icon-goodsnew text-orange"></text>
+        <text class="text-grey">代售点查询</text>
+      </navigator>
+    </view>
   </view>
   <view class="cu-list menu card-menu margin-top margin-bottom-xl shadow-lg radius">
     <!-- <view class="cu-item arrow">

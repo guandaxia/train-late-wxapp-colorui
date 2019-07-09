@@ -1,0 +1,43 @@
+<!--mini-program/pages/sellTicket/sellTicket.wxml-->
+<wxs src="../../filter/filter.wxs" module="filter" />
+<view class='content'>
+  <cu-custom isCustom bgColor="bg-gradual-blue">
+    <view slot="content">代售点查询</view>
+  </cu-custom>
+  <view catchtap='pageTap'>
+    <form report-submit bindsubmit="formSubmit">
+     	<view class="cu-form-group margin-top">
+        <view class="title">所在地区</view>
+        <picker mode="region" bindchange="regionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{region[0]}}-{{region[1]}}-{{region[2]}}
+          </view>
+        </picker>
+      </view>
+      <view class="padding">
+        <button class="cu-btn block bg-green margin-tb-sm lg" form-type="submit">查询</button>
+      </view>
+    </form>
+  </view>
+
+  <view class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow" wx:for="{{stationList}}" wx:key="{{item.agency_name}}">
+      <view class="content padding-top" bindtap='detail' data-address='{{item.address}}'>
+        <view>
+          <text>{{item.agency_name}}</text>
+        </view>
+        <view class='text-gray text-sm margin-top margin-bottom'>
+          <text class="text-grey">{{item.address}}</text>
+        </view>
+        <view class="text-grey text-sm padding-bottom">
+          营业时间：<text>{{filter.timeFilter(item.start_time_am)}} - {{filter.timeFilter(item.stop_time_am)}}</text> <text class='margin-left'>{{filter.timeFilter(item.start_time_pm)}} - {{filter.timeFilter(item.stop_time_pm)}}</text>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+</view>
+
+<view class='margin-top'>
+  <ad unit-id="adunit-d70e7f630e07ced1"></ad>
+</view>

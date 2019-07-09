@@ -1,8 +1,12 @@
-var dateFilter = function (value) {
-  console.log(value)
-  return value
+
+var timeFilter = function (value) {
+  
+  if(value){
+    return value.slice(0, 2) + ':' + value.slice(2)
+  }
+  return ''
 }
 
 module.exports = {
-  dateFilter: dateFilter
+  timeFilter: timeFilter
 }

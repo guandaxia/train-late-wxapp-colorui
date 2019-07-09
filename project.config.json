@@ -43,7 +43,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -112,6 +112,20 @@
 					"id": -1,
 					"name": "起售时间",
 					"pathName": "pages/sellTime/sellTime",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的行程",
+					"pathName": "pages/travel/travel",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "代售点查询",
+					"pathName": "pages/sellTicket/sellTicket",
 					"scene": null
 				}
 			]
