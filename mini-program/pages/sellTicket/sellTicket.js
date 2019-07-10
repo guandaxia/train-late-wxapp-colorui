@@ -96,6 +96,13 @@ Page({
 
       console.log(res.result)
       wx.hideLoading()
+      if(res.result.length <=0){
+        wx.showToast({
+          title: '没有找到代售点',
+          icon: 'none'
+        })
+        return 
+      }
       this.setData({
         stationList: res.result
       })
