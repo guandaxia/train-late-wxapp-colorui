@@ -79,6 +79,7 @@ function compareVersion(v1, v2) {
 
 
 module.exports = {
+  formatNumber: formatNumber,
   formatTime: formatTime,
   sign: sign,
   checkTrainCode: checkTrainCode,

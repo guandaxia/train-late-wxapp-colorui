@@ -16,7 +16,7 @@ function georegeo(address, city){
       success(res){
         console.log(res.data)
         if(res.data == 0){
-          reject(info)
+          reject(res.info)
         }
         resolve(res.data.geocodes[0])
       },
