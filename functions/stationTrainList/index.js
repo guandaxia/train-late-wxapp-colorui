@@ -27,7 +27,7 @@ function formatTime(date) {
 exports.main = async (event, context) => {
   // const wxContext = cloud.getWXContext()
 
-  let url = "https://kyfw.12306.cn/otn/leftTicket/query"
+  let url = "https://kyfw.12306.cn/otn/leftTicket/queryA"
 
   let date = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 1)
   let data = {
