@@ -58,15 +58,15 @@ Page({
     let startTime = '', arriveTime = '', diffStartTime = 0, diffArriveTime = 0
     let tmpList = []
     list.forEach(item=>{
-      item.disabled = true
+      item.disabled = false
       startTime = dayjs().format('YYYY-MM-DD') +  ' ' + item.start_time
       arriveTime = dayjs().format('YYYY-MM-DD') + ' ' + item.arrive_time
       diffStartTime = nowTime.diff(dayjs(startTime), 'minute')
       diffArriveTime = nowTime.diff(dayjs(arriveTime), 'minute')
 
-      if ((diffArriveTime <= 60 && diffArriveTime >=-180 ) || (diffStartTime <= 60 && diffStartTime >= -180)){
-        item.disabled = false
-      }
+      // if ((diffArriveTime <= 60 && diffArriveTime >=-180 ) || (diffStartTime <= 60 && diffStartTime >= -180)){
+      //   item.disabled = false
+      // }
       tmpList.push(item)
     })
     tmpList[tmpList.length - 1].start_time = '----'
