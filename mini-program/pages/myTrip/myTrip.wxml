@@ -1,0 +1,7 @@
+<!--mini-program/pages/myTrip/myTrip.wxml-->
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">我的行程</view>
+</cu-custom>
+<view class="">
+
+</view>
