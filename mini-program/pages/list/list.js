@@ -2,6 +2,8 @@
 const dayjs = require('../../libs/dayjs.min.js')
 // import { http } from '../../utils/http.js'
 const app = getApp()
+let scrollTop = 0
+
 Page({
 
   /**
@@ -21,33 +23,42 @@ Page({
     let trainNo = options.train_no
     console.log(trainNo)
     // let stationList = app.globalData.stationList
-    wx.showLoading({
-      title:'数据加载中'
-    })
-    wx.cloud.callFunction({
-      name: 'stationStopInfo',
-      data: {
-        trainNo,
-      }
-    }).then(res => {
+    // wx.showLoading({
+    //   title:'数据加载中'
+    // })
+    // wx.cloud.callFunction({
+    //   name: 'stationStopInfo',
+    //   data: {
+    //     trainNo,
+    //   }
+    // }).then(res => {
 
-      console.log(res.result)
-      let stationList = this.formatList(res.result)
-      wx.hideLoading()
-      this.setData({
-        stationList
-      })
-    }).catch(err=>{
-      wx.hideLoading()
-    })
-
-
+    //   console.log(res.result)
+    //   let stationList = this.formatList(res.result)
+    //   wx.hideLoading()
+    //   this.setData({
+    //     stationList
+    //   })
+    // }).catch(err=>{
+    //   wx.hideLoading()
+    // })
 
     // stationList = this.formatList(stationList)
     this.setData({
       trainCode,
-      // stationList
+      stationList: getApp().globalData.stationStopList
     })
+    let scrollTop = wx.getStorageSync('scrollTop') || 0
+    console.log(scrollTop)
+    wx.pageScrollTo({
+      scrollTop,
+      duration: 300,
+    })
+  },
+
+  onPageScroll(e) {
+    console.log(e.scrollTop)//获取滚动条当前位置的值
+    scrollTop = e.scrollTop
   },
 
   /**
@@ -57,9 +68,9 @@ Page({
     let nowTime = dayjs()
     let startTime = '', arriveTime = '', diffStartTime = 0, diffArriveTime = 0
     let tmpList = []
-    list.forEach(item=>{
+    list.forEach(item => {
       item.disabled = false
-      startTime = dayjs().format('YYYY-MM-DD') +  ' ' + item.start_time
+      startTime = dayjs().format('YYYY-MM-DD') + ' ' + item.start_time
       arriveTime = dayjs().format('YYYY-MM-DD') + ' ' + item.arrive_time
       diffStartTime = nowTime.diff(dayjs(startTime), 'minute')
       diffArriveTime = nowTime.diff(dayjs(arriveTime), 'minute')
@@ -74,7 +85,7 @@ Page({
     return tmpList
   },
 
-  formSubmit ({detail}) {
+  formSubmit({ detail }) {
     let station = detail.value.station
     let index = detail.value.index
     let trainCode = this.data.trainCode
@@ -85,7 +96,7 @@ Page({
     wx.cloud.callFunction({
       name: 'trainLate',
       data: {
-        train_code:trainCode,
+        train_code: trainCode,
         station,
       }
     }).then(res => {
@@ -116,37 +127,6 @@ Page({
       wx.hideLoading()
     })
     return
-
-    // http('/trainLate', {
-    //   'train_number': trainCode,
-    //   'station': station
-    // }, 'GET')
-    //   .then(res => {
-    //     console.log(res.train_info)
-    //     let trainInfo = res.train_info
-    //     if(trainInfo.start_time == '' && trainInfo.arrive_time == ''){
-    //       wx.showToast({
-    //         title: '未查到，请稍后重试',
-    //         icon: 'none'
-    //       })
-    //       return
-    //     }
-
-    //     let key = 'stationList[' + index + "]" 
-        
-    //     let stationInfo = this.data.stationList[index]
-    //     stationInfo['actual_start_time'] = trainInfo.start_time
-    //     stationInfo['actual_arrive_time'] = trainInfo.arrive_time
-    //     stationInfo['buttonText'] = '刷新'
-    //     console.log(stationInfo)
-    //     this.setData({
-    //       [key]: stationInfo
-    //     })
-    //     // wx.showModal({
-    //     //   content: res.train_info,
-    //     //   showCancel: false
-    //     // })
-    //   })
   },
 
   /**
@@ -167,14 +147,20 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    wx.setStorage({
+      key: 'scrollTop',
+      data: scrollTop,
+    })
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.setStorage({
+      key: 'scrollTop',
+      data: scrollTop,
+    })
   },
 
   /**

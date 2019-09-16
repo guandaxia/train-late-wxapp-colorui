@@ -1,4 +1,4 @@
-<!--pages/list/list.wxml-->
+<!-- pages/list/list.wxml -->
 <view class='content'>
   <cu-custom isCustom bgColor="bg-gradual-blue">
     <view slot="content">{{trainCode}}</view>
@@ -10,7 +10,7 @@
     <view class="basis-sm">操作</view>
   </view>
   <view style='margin-top:80rpx'>
-    <view wx:for="{{stationList}}" wx:key="{{item.station_name}}">
+    <view wx:for="{{stationList}}" wx:key="{{item.station_name}}" id="train-{{index}}">
       <form report-submit bindsubmit="formSubmit">
         <input style='display:none;' name="station" value="{{item.station_name}}" />
         <input style='display:none;' name="index" value="{{index}}" />
@@ -18,14 +18,20 @@
           <view class='padding-sm basis-sm'>{{item.station_name}}</view>
           <view class='basis-sm'>
             <view>{{item.arrive_time}}</view>
-            <view wx:if="{{item.actual_arrive_time}}" class="cu-tag round line-red sm ">预计{{item.actual_arrive_time}}到达</view>
+            <view wx:if="{{item.actual_arrive_time}}" class="cu-tag round line-red sm ">
+              预计{{item.actual_arrive_time}}到达
+            </view>
           </view>
           <view class='basis-sm'>
             <view>{{item.start_time}}</view>
-            <view wx:if="{{item.actual_start_time}}" class="cu-tag round line-red sm ">预计{{item.actual_start_time}}发车</view>
+            <view wx:if="{{item.actual_start_time}}" class="cu-tag round line-red sm ">
+              预计{{item.actual_start_time}}发车
+            </view>
           </view>
           <view class='basis-sm'>
-            <button class="cu-btn bg-green " disabled="{{item.disabled}}" form-type="submit" type="">{{item.buttonText || '查询'}}</button>
+            <button class="cu-btn bg-green " disabled="{{item.disabled}}" form-type="submit" type="">
+              {{item.buttonText || '查询'}}
+            </button>
           </view>
         </view>
       </form>
