@@ -48,12 +48,14 @@ Page({
       trainCode,
       stationList: getApp().globalData.stationStopList
     })
-    let scrollTop = wx.getStorageSync('scrollTop') || 0
-    console.log(scrollTop)
-    wx.pageScrollTo({
-      scrollTop,
-      duration: 300,
-    })
+    let scrollInfo = wx.getStorageSync('scrollTop') || { trainCode: '', scrollTop: 0 }
+    console.log(scrollInfo)
+    if (scrollInfo.trainCode == trainCode) {
+      wx.pageScrollTo({
+        scrollTop: scrollInfo.scrollTop,
+        duration: 300,
+      })
+    }
   },
 
   onPageScroll(e) {
@@ -148,8 +150,11 @@ Page({
    */
   onHide: function () {
     wx.setStorage({
-      key: 'scrollTop',
-      data: scrollTop,
+      key: 'scrollInfo',
+      data: {
+        scrollTop,
+        trainCode: this.data.trainCode
+      },
     })
   },
 
@@ -159,7 +164,10 @@ Page({
   onUnload: function () {
     wx.setStorage({
       key: 'scrollTop',
-      data: scrollTop,
+      data: {
+        scrollTop,
+        trainCode: this.data.trainCode
+      },
     })
   },
 
