@@ -1,7 +1,7 @@
 //index.js
 // import {http} from '../../utils/http.js'
 import { checkTrainCode } from '../../utils/util.js'
-import { getTrainNo } from '../../utils/train'
+import { stationStopInfo } from '../../utils/train'
 //获取应用实例
 const app = getApp()
 let interstitialAd = null
@@ -107,36 +107,21 @@ Page({
         })
         return
       }
-
-      let info
-      try {
-        info = await getTrainNo(trainCode)
-        console.log(info)
-      } catch (error) {
+      let result = await stationStopInfo(trainCode)
+      console.log(result)
+      if (result.stationList.length === 0) {
         wx.showToast({
-          title: '未找到车次',
+          title: '未找到该车次',
           image: '/images/error.png'
         })
         return
       }
-      // const db = wx.cloud.database()
-      // let res = await db.collection('train_list').where({
-      //   train_code: trainCode
-      // }).get()
-      // console.log(res.data)
-      // if (res.data.length <= 0) {
-      //   wx.showToast({
-      //     title: '未找到车次',
-      //     image: '/images/error.png'
-      //   })
-      //   return
-      // }
-      // let info = res.data[0]
+      app.globalData.stationStopList = result.stationList
+
       let historyInfo = {
-        train_code: info.train_code,
-        train_no: info.train_no,
-        start: info.start_station,
-        end: info.end_station,
+        train_code: trainCode,
+        start: result.start_station,
+        end: result.end_station,
         list: []
       }
       let queryHistory = this.data.queryHistory
@@ -150,7 +135,7 @@ Page({
       }
       queryHistory.unshift(historyInfo)
       if (queryHistory.length > 5) {
-        // 删除最后一个元素，保证不超过10条历史记录
+        // 删除最后一个元素，保证不超过5条历史记录
         queryHistory.pop()
       }
       wx.setStorage({
@@ -159,7 +144,7 @@ Page({
       })
 
       wx.navigateTo({
-        url: `../list/list?id=${trainCode}&train_no=${info.train_no}`
+        url: `../list/list?id=${trainCode}`
       })
 
       this.setData({
@@ -214,13 +199,22 @@ Page({
     }
   },
 
-  query(e) {
+  async query(e) {
     // console.log(e)
     let data = e.currentTarget.dataset.info
 
-    app.globalData.stationList = data.list
+    let result = await stationStopInfo(data.train_code)
+    console.log(result)
+    if (result.stationList.length === 0) {
+      wx.showToast({
+        title: '未找到该车次',
+        image: '/images/error.png'
+      })
+      return
+    }
+    app.globalData.stationStopList = result.stationList
     wx.navigateTo({
-      url: `../list/list?id=${data.train_code}&train_no=${data.train_no}`
+      url: `../list/list?id=${data.train_code}`
     })
   },
   switch(e) {

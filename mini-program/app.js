@@ -1,5 +1,5 @@
 //app.js
-import { compareVersion} from './utils/util.js'
+import { compareVersion } from './utils/util.js'
 App({
   onLaunch: function () {
     const updateManager = wx.getUpdateManager()
@@ -34,9 +34,9 @@ App({
       success: e => {
         console.log(e)
         console.log(compareVersion(e.SDKVersion, '1.6.8'))
-        if (!compareVersion(e.SDKVersion, '2.1.0')){
+        if (!compareVersion(e.SDKVersion, '2.1.0')) {
           this.globalData.StatusBar = 0
-          return 
+          return
         }
         this.globalData.StatusBar = e.statusBarHeight;
         let custom = wx.getMenuButtonBoundingClientRect();
@@ -50,5 +50,6 @@ App({
     selectStartStation: '',
     selectEndStation: '',
     stationTrainList: [],
+    stationStopList: [],
   }
 })

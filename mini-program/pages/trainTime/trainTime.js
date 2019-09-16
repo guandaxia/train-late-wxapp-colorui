@@ -1,6 +1,7 @@
 // pages/trainTime/trainTime.js
 const app = getApp()
 import { http } from '../../utils/http.js'
+import { stationStopInfo } from '../../utils/train'
 
 Page({
 
@@ -15,20 +16,20 @@ Page({
     startTimeSort: 1,
     arriveTimeSort: 0,
     menu: [{
-        key: 'station_train_code',
-        title: '车次',
-        sort: 0
-      },
-      {
-        key: 'start_time',
-        title: '出发时间',
-        sort: 1
-      },
-      {
-        key: 'arrive_time',
-        title: '到达时间',
-        sort: 0
-      }]
+      key: 'station_train_code',
+      title: '车次',
+      sort: 0
+    },
+    {
+      key: 'start_time',
+      title: '出发时间',
+      sort: 1
+    },
+    {
+      key: 'arrive_time',
+      title: '到达时间',
+      sort: 0
+    }]
   },
 
   /**
@@ -85,24 +86,24 @@ Page({
     }
   },
 
-  sortHandle(e){
+  sortHandle(e) {
     let index = e.currentTarget.dataset.index
     console.log(index)
     let menu = this.data.menu
     let key = menu[index].key
 
-    let sort = menu[index].sort 
+    let sort = menu[index].sort
 
-    for(let i=0; i<menu.length; i++){
+    for (let i = 0; i < menu.length; i++) {
       menu[i].sort = 0
     }
 
     let stationList = this.data.stationList
-    stationList.sort((a, b)=>{
-      if(sort == 0 || sort == 2){
+    stationList.sort((a, b) => {
+      if (sort == 0 || sort == 2) {
         menu[index].sort = 1
         return a[key].localeCompare(b[key])
-      }else{
+      } else {
         menu[index].sort = 2
         return b[key].localeCompare(a[key])
       }
@@ -114,84 +115,47 @@ Page({
     })
   },
 
-  search(e){
+  async search(e) {
     let trainCode = e.currentTarget.dataset.trainCode
     let globalData = getApp().globalData
 
-    const db = wx.cloud.database()
-    db.collection('train_list').where({
-      train_code: trainCode
-    }).get().then(res => {
-
-      console.log(res.data)
-      let info = res.data[0]
-      let historyInfo = {
-        train_code: trainCode,
-        train_no: info.train_no,
-        start: info.start_station,
-        end: info.end_station,
-        list: []
-      }
-      let queryHistory = wx.getStorageSync('query_history') || []
-      
-      let index = queryHistory.findIndex(item => {
-        return item.train_code == trainCode
+    let result = await stationStopInfo(trainCode)
+    console.log(result)
+    if (result.stationList.length === 0) {
+      wx.showToast({
+        title: '未找到该车次',
+        image: '/images/error.png'
       })
+      return
+    }
+    globalData.stationStopList = result.stationList
 
-      if (index !== -1) {
-        queryHistory.splice(index, 1)
-      }
-      queryHistory.unshift(historyInfo)
-      if (queryHistory.length > 5) {
-        // 删除最后一个元素，保证不超过10条历史记录
-        queryHistory.pop()
-      }
-      wx.setStorage({
-        key: 'query_history',
-        data: queryHistory,
-      })
+    let historyInfo = {
+      train_code: trainCode,
+      start: result.start_station,
+      end: result.end_station,
+    }
+    let queryHistory = wx.getStorageSync('query_history') || []
 
-      wx.navigateTo({
-        url: `../list/list?id=${trainCode}&train_no=${info.train_no}`
-      })
-
-
+    let index = queryHistory.findIndex(item => {
+      return item.train_code == trainCode
     })
 
-    // http('/getStationStopInfo', { 'train_number': trainNumber }, 'POST')
-    //   .then(res => {
-    //     console.log(res)
-    //     let trainInfo = res.train_info
+    if (index !== -1) {
+      queryHistory.splice(index, 1)
+    }
+    queryHistory.unshift(historyInfo)
+    if (queryHistory.length > 5) {
+      // 删除最后一个元素，保证不超过10条历史记录
+      queryHistory.pop()
+    }
+    wx.setStorage({
+      key: 'query_history',
+      data: queryHistory,
+    })
 
-    //     app.globalData.stationList = trainInfo
-
-    //     let startStation = trainInfo[0].station_name
-    //     let endStation = trainInfo[0].end_station_name
-    //     let historyInfo = {
-    //       train_number: trainNumber,
-    //       start: startStation,
-    //       end: endStation,
-    //       list: trainInfo
-    //     }
-
-    //     let queryHistory = wx.getStorageSync('query_history') || []
-    //     if (!queryHistory[0] || (queryHistory[0].train_number !== historyInfo.train_number)) {
-    //       let length = queryHistory.unshift(historyInfo)
-    //       console.log(length)
-    //       if (length > 5) {
-    //         queryHistory.splice(5, length - 5)
-    //         console.log(queryHistory)
-    //       }
-
-    //       wx.setStorageSync('query_history', queryHistory)
-    //     }
-
-    //     wx.navigateTo({
-    //       url: '../list/list?id=' + trainNumber
-    //     })
-    //   }).catch(error => {
-    //     console.log(error)
-    //   })
-
+    wx.navigateTo({
+      url: `../list/list?id=${trainCode}`
+    })
   }
 })
