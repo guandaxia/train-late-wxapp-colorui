@@ -41,12 +41,13 @@ exports.main = async (event, context) => {
   console.log(url)
 
   fly.config.headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
+    'Cookie': 'BIGipServerotn=217055754.64545.0000; RAIL_EXPIRATION=1568939526562; RAIL_DEVICEID=EmKOeMxaJKNT-Kmj0BkLFcuq7qKnJItA9Eza1-Nd9bpAJomLKOvaJpKj9yGYXhF_dyhzvd86XRZxVNtAWX91uzG90ZbWZ4qNmjfnFhwpD2Y1rLWfRuyhXZPCH1olOf--E0nPohnyiT6Lt3hG1hRHTNS4UfvT72Dt; BIGipServerpool_passport=183304714.50215.0000'
   }
 
   try {
     let result = await fly.get(url)
-    
+    console.log(result.data)
     result = result.data.data.result
     console.log(result)
     let trainList = []
