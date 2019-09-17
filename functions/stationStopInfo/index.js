@@ -72,6 +72,7 @@ async function queryByTrainCode(trainCode, date) {
     'tDate': formatTime(date, ''),
     'f_station_code': '',
     't_station_code': '',
+    'uKey': 'SsOMgiGZN7GaIK-F-iSMXzUBWGj2uaod73w_EAafg2g0',
   }
   console.log(data)
 
@@ -82,9 +83,7 @@ async function queryByTrainCode(trainCode, date) {
 
   try {
     let result = await fly.post(url, querystring.stringify(data))
-    console.log(result.data)
-
-    // if (result.)
+    console.log(result)
 
     return result.data.data.trainStopInfo
   } catch (e) {
