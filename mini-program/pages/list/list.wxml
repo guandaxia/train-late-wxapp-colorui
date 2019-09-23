@@ -10,39 +10,45 @@
     <view class="basis-sm">操作</view>
   </view>
   <view style='margin-top:80rpx'>
-    <view wx:for="{{stationList}}" wx:key="{{item.station_name}}" id="train-{{index}}">
-      <form report-submit bindsubmit="formSubmit">
-        <input style='display:none;' name="station" value="{{item.station_name}}" />
-        <input style='display:none;' name="index" value="{{index}}" />
-        <view class="flex padding-sm align-center text-lg solid-bottom bg-white text-center ">
-          <view class='padding-sm basis-sm'>{{item.station_name}}</view>
-          <view class='basis-sm'>
-            <view>{{item.arrive_time}}</view>
-            <view wx:if="{{item.actual_arrive_time}}" class="cu-tag round line-red sm ">
-              预计{{item.actual_arrive_time}}到达
+    <scroll-view style="position:absolute; top:210rpx; left:0; right:0; bottom:0;" scroll-with-animation="true" scroll-y="true" enable-back-to-top="true" bindscroll="scrollHandle" scroll-top="{{scrollTop}}" scroll-with-animation="true">
+      <view wx:for="{{stationList}}" wx:key="{{item.station_name}}" id="train-{{index}}">
+        <form report-submit bindsubmit="formSubmit">
+          <input style='display:none;' name="station" value="{{item.station_name}}" />
+          <input style='display:none;' name="index" value="{{index}}" />
+          <view class="flex padding-sm align-center text-lg solid-bottom bg-white text-center ">
+            <view class='padding-sm basis-sm'>{{item.station_name}}</view>
+            <view class='basis-sm'>
+              <view>{{item.arrive_time}}</view>
+              <view wx:if="{{item.actual_arrive_time}}" class="cu-tag round line-red sm ">
+                预计{{item.actual_arrive_time}}到达
+              </view>
+            </view>
+            <view class='basis-sm'>
+              <view>{{item.start_time}}</view>
+              <view wx:if="{{item.actual_start_time}}" class="cu-tag round line-red sm ">
+                预计{{item.actual_start_time}}发车
+              </view>
+            </view>
+            <view class='basis-sm'>
+              <button class="cu-btn bg-green " disabled="{{item.disabled}}" form-type="submit" type="">
+                {{item.buttonText || '查询'}}
+              </button>
             </view>
           </view>
-          <view class='basis-sm'>
-            <view>{{item.start_time}}</view>
-            <view wx:if="{{item.actual_start_time}}" class="cu-tag round line-red sm ">
-              预计{{item.actual_start_time}}发车
-            </view>
-          </view>
-          <view class='basis-sm'>
-            <button class="cu-btn bg-green " disabled="{{item.disabled}}" form-type="submit" type="">
-              {{item.buttonText || '查询'}}
-            </button>
-          </view>
-        </view>
-      </form>
-    </view>
+        </form>
+      </view>
+      <view class='padding bg-white solid-bottom' wx:if="{{stationList.length}}">
+        <view>1. 提供未来3小时内列车到站和发车正晚点信息</view>
+        <view>2. 可查询过去1小时内列车到站和发车正晚点信息</view>
+        <view>3. 本功能及查询结果仅作为参考，准确信息以车站公告为准</view>
+      </view>
+      <view class='margin-top' wx:if="{{stationList.length}}">
+        <ad unit-id="adunit-e27e69b0b57f1116"></ad>
+      </view>
+    </scroll-view>
   </view>
-  <view class='padding bg-white solid-bottom' wx:if="{{stationList.length}}">
-    <view>1. 提供未来3小时内列车到站和发车正晚点信息</view>
-    <view>2. 可查询过去1小时内列车到站和发车正晚点信息</view>
-    <view>3. 本功能及查询结果仅作为参考，准确信息以车站公告为准</view>
+  <!-- 返回顶部 -->
+  <view bindtap="goTop" class="widget-goTop" wx:if="{{floorstatus}}">
+    <text class="iconfont i-goto-top"></text>
   </view>
-</view>
-<view class='margin-top' wx:if="{{stationList.length}}">
-  <ad unit-id="adunit-e27e69b0b57f1116"></ad>
 </view>
