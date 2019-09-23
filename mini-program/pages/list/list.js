@@ -49,18 +49,29 @@ Page({
       stationList: getApp().globalData.stationStopList
     })
     let scrollInfo = wx.getStorageSync('scrollTop') || { trainCode: '', scrollTop: 0 }
-    console.log(scrollInfo)
+    // console.log(scrollInfo)
     if (scrollInfo.trainCode == trainCode) {
-      wx.pageScrollTo({
-        scrollTop: scrollInfo.scrollTop,
-        duration: 300,
+      this.setData({
+        scrollTop: scrollInfo.scrollTop
       })
     }
   },
 
-  onPageScroll(e) {
-    console.log(e.scrollTop)//获取滚动条当前位置的值
-    scrollTop = e.scrollTop
+  goTop(t) {
+    this.setData({
+      scrollTop: 0
+    })
+  },
+
+  scrollHandle(t) {
+
+    scrollTop = t.detail.scrollTop
+    // console.log(scrollTop)
+    let floorstatus = scrollTop > 300 ? 1 : 0
+
+    this.setData({
+      floorstatus
+    })
   },
 
   /**
