@@ -145,6 +145,14 @@
 					"id": -1,
 					"name": "我的行程",
 					"pathName": "pages/myTrip/myTrip",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "添加行程",
+					"pathName": "pages/addTrip/addTrip",
+					"query": "",
 					"scene": null
 				}
 			]

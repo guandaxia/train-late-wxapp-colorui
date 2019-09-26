@@ -10,7 +10,8 @@
     "pages/ticketCheck/ticketCheck",
     "pages/sellTime/sellTime",
     "pages/sellTicket/sellTicket",
-    "pages/myTrip/myTrip"
+    "pages/myTrip/myTrip",
+    "pages/addTrip/addTrip"
   ],
   "window": {
     "backgroundTextStyle": "light",
