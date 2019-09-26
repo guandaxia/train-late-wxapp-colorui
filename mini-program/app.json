@@ -9,7 +9,9 @@
     "pages/setting/setting",
     "pages/ticketCheck/ticketCheck",
     "pages/sellTime/sellTime",
-    "pages/sellTicket/sellTicket"
+    "pages/sellTicket/sellTicket",
+    "pages/myTrip/myTrip",
+    "pages/addTrip/addTrip"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,6 +25,12 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
+        "iconPath": "/images/tabbar/basics.png",
+        "selectedIconPath": "/images/tabbar/basics_cur.png"
+      },
+      {
+        "pagePath": "pages/myTrip/myTrip",
+        "text": "行程",
         "iconPath": "/images/tabbar/basics.png",
         "selectedIconPath": "/images/tabbar/basics_cur.png"
       },

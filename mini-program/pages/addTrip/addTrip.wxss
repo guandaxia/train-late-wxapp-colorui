@@ -1,0 +1,9 @@
+/* mini-program/pages/addTrip/addTrip.wxss */
+input {
+  text-align: right;
+}
+
+.submit {
+  margin: 30rpx auto 0;
+  width: 80%;
+}

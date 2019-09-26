@@ -1,0 +1,71 @@
+/* mini-program/pages/myTrip/myTrip.wxss */
+
+.trip-info {
+  padding: 10rpx 10rpx 30rpx;
+
+}
+
+.trip-header {
+  /* border-bottom: 1rpx solid #f1f1f1; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  text-align: right;
+}
+
+.trip-number {
+  font-size: 45rpx;
+  font-weight: 600;
+}
+
+.trip-date {
+  margin-bottom: 10rpx;
+}
+
+.station-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 30rpx;
+  color: #888;
+}
+
+.trip-status {
+  position: relative;
+  box-sizing: border-box;
+  width: 150rpx;
+  text-align: center;
+  border-bottom: 5rpx solid #ccc;
+}
+
+.trip-status .i-train {
+  /* height: 60rpx;
+  line-height: 60rpx;
+  border: 1rpx solid #CCC;
+  border-radius: 10rpx;
+  padding: 0 30rpx;
+  color: #CCC; */
+  font-size: 70rpx;
+}
+
+.jiantou {
+  position: absolute;
+  bottom: 0;
+  right: -10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-bottom: 5rpx solid #ccc;
+  transform: rotate(45deg);
+}
+
+.station-name {
+  font-size: 36rpx;
+  color: #222;
+  margin-bottom: 10rpx;
+}
+
+.tips {
+  padding: 10rpx 20rpx;
+}

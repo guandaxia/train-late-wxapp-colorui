@@ -1,0 +1,37 @@
+<!-- mini-program/pages/addTrip/addTrip.wxml -->
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">添加行程</view>
+</cu-custom>
+<view catchtap='pageTap'>
+  <form report-submit bindsubmit="formSubmit">
+    <view class="cu-form-group margin-top">
+      <view class="title">车次</view>
+      <input name="train_code" placeholder="请输入车次" catchtap="bindKeyInput" disabled value='{{input}}'></input>
+      <text class="icon-roundclosefill text-gray" wx-if="{{showClear}}" catchtap='clearInput'></text>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">乘车日期</view>
+      <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="dateChange">
+        <view class="picker">{{date || '请选择乘车日期'}}</view>
+      </picker>
+    </view>
+    <view class="cu-form-group margin-top">
+      <view class="title">起点站</view>
+      <picker bindchange="selectStartStation" value="{{index}}" range="{{stationList}}" range-key="name">
+        <view class="picker">{{index ? stationList[index]['name'] : '请选择起点车站'}}</view>
+      </picker>
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">终点站</view>
+      <picker bindchange="selectStation" value="{{index}}" range="{{stationList}}" range-key="name">
+        <view class="picker">{{index ? stationList[index]['name'] : '请选择终点车站'}}</view>
+      </picker>
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="submit">
+      <button type="primary" form-type="submit">提交</button>
+    </view>
+  </form>
+</view>
+<keyboard showKeyboard="{{showKeyboard}}" inputValue="{{input}}" bind:keyboardValue="keyboardValue" bind:hideKeyboard="hideKeyboard"></keyboard>
