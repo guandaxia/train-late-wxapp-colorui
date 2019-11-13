@@ -1,6 +1,10 @@
 /* mini-program/pages/historyTrip/historyTrip.wxss */
  @import "../../template/empty/empty.wxss"; 
 
+.trip-list{
+  margin-bottom: 100rpx;
+}
+
 .trip-info {
   padding: 10rpx 10rpx 30rpx;
 

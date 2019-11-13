@@ -4,7 +4,7 @@
   <view slot="content">历史行程</view>
 </cu-custom>
 <view wx:if="{{trainList.length > 0}}" class="trip-list">
-  <view wx:for="{{trianList}}" class="bg-white radius shadow-warp margin">
+  <view wx:for="{{trainList}}" class="bg-white radius shadow-warp margin">
     <view class="trip-header">
       <view class="trip-number text-red">{{item.date}}</view>
     </view>
@@ -50,7 +50,7 @@
 <view wx:else>
   <template is="empty" data="{{tips: '暂时没有历史行程'}}" />
 </view>
-<view class="margin-top-lg" wx:if="{{trianList.length > 0}}">
+<view class="margin-top-lg" wx:if="{{trainList.length > 0}}">
 <view class='line text-white'>以下就是广告了哦</view>
 <ad unit-id="adunit-844f305b20971487" ad-type="video" ad-theme="white"></ad>
 </view>

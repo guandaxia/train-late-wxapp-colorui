@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    trainList: []
   },
 
   /**
@@ -69,12 +69,12 @@ Page({
       date_obj: _.gte(new Date())
     }).get()
     console.log(res)
-    let trianList = res.data || []
-    console.log(trianList)
-    trianList = this.formatList(trianList)
-    console.log(trianList)
+    let trainList = res.data || []
+    console.log(trainList)
+    trainList = this.formatList(trainList)
+    console.log(trainList)
     this.setData({
-      trianList
+      trainList
     })
 
   },

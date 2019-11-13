@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    trainList: []
   },
 
   /**
@@ -66,13 +66,10 @@ Page({
     let res = await db.collection('my_trip').where({
       date_obj: _.lt(new Date())
     }).get()
-    console.log(res)
-    let trianList = res.data || []
-    console.log(trianList)
-    // trianList = this.formatList(trianList)
-    console.log(trianList)
+    // console.log(res)
+    let trainList = res.data || []
     this.setData({
-      trianList
+      trainList
     })
 
   },

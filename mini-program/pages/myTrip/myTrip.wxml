@@ -8,8 +8,8 @@
   <text class="icon-title text-orange "></text>
   未出行行程
 </view>
-<view wx:if="{{trainList.length < 0}}" class="trip-list">
-  <view wx:for="{{trianList}}" class="bg-white radius shadow-warp margin">
+<view wx:if="{{trainList.length > 0}}" class="trip-list">
+  <view wx:for="{{trainList}}" class="bg-white radius shadow-warp margin">
     <view class="trip-header">
       <view class="trip-number text-red">{{item.date}}</view>
       <view>
