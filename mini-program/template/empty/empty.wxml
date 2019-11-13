@@ -1,0 +1,6 @@
+<template name="empty">
+  <view class="empty">
+    <view class='empty-image'><image src='/images/empty.png' /></view>
+    <view>{{tips}}</view>
+  </view>
+</template>

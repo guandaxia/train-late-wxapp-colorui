@@ -1,0 +1,16 @@
+.empty{
+  text-align: center;
+  color: #999;
+  margin-bottom: 130rpx;
+}
+
+.empty-image{
+  width: 100%;
+  height: 346rpx;
+  margin: 50rpx auto;
+}
+
+.empty-image image{
+  width: 100%;
+  height: 100%;
+}
