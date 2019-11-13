@@ -116,10 +116,12 @@ Page({
   },
 
   async search(e) {
-    let trainCode = e.currentTarget.dataset.trainCode
+    let dataset = e.currentTarget.dataset
+    let trainNo = dataset.trainNo
+    let trainCode = dataset.trainCode
     let globalData = getApp().globalData
 
-    let result = await stationStopInfo(trainCode)
+    let result = await stationStopInfo(trainNo)
     console.log(result)
     if (result.stationList.length === 0) {
       wx.showToast({

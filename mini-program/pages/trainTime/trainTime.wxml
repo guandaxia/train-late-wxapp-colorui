@@ -28,7 +28,7 @@
     <view>{{item.arrive_time}}</view>
   </view>
   <view class='basis-sm'>
-    <button class="cu-btn bg-green " disabled="{{item.disabled}}" bindtap='search' data-train-code="{{item.station_train_code}}" type="">查询</button>
+    <button class="cu-btn bg-green " disabled="{{item.disabled}}" bindtap='search' data-train-no="{{item.train_no}}" data-train-code="{{item.station_train_code}}" type="">查询</button>
   </view>
 </view>
 </view>

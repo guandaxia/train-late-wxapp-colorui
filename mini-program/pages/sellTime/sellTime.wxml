@@ -8,6 +8,7 @@
       <view class="cu-form-group margin-top">
         <view class="title train-code">车站</view>
         <input name="station" placeholder="请选择车站" catchtap="bindKeyInput" disabled value='{{station.stationName}}'></input>
+        <text class="icon-right text-gray"></text>
       </view>
       <view class="padding">
         <button class="cu-btn block bg-green margin-tb-sm lg" form-type="submit">查询</button>

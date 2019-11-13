@@ -18,7 +18,7 @@
     />
 </view>
 <view class='margin-top padding bg-white solid-bottom' >
-<view>{{selectDay}}最晚可购买{{newDay}}车票</view>
+<view>{{selectDay}}最晚可购买<text class="text-red">{{newDay}}</text>车票</view>
 </view>
 <view class='margin-top padding-sm bg-white solid-bottom text-sm' >
 <view>目前车票预售期为{{buyTicketCount}}天</view>
