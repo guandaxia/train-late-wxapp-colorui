@@ -27,7 +27,7 @@ Page {
   width: 76rpx;
   height: 76rpx;
   border-radius: 76rpx;
-  border: 1rpx solid #eee;
+  /* border: 1rpx solid #eee; */
 }
 
 .widget-goTop .i-goto-top {
