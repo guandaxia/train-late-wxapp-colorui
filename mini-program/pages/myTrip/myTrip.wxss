@@ -1,4 +1,5 @@
 /* mini-program/pages/myTrip/myTrip.wxss */
+ @import "../../template/empty/empty.wxss"; 
 
 .trip-info {
   padding: 10rpx 10rpx 30rpx;
@@ -10,12 +11,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx;
+  padding: 20rpx 30rpx 0;
   text-align: right;
 }
 
 .trip-number {
-  font-size: 45rpx;
+  font-size: 32;
   font-weight: 600;
 }
 
@@ -30,23 +31,23 @@
   text-align: center;
   padding: 30rpx;
   color: #888;
+  border-bottom: 1rpx solid #EEE;
 }
 
 .trip-status {
   position: relative;
   box-sizing: border-box;
-  width: 150rpx;
+  width: 180rpx;
   text-align: center;
   border-bottom: 5rpx solid #ccc;
 }
 
+.trip-status-text {
+  font-size: 45rpx;
+  color: #222;
+}
+
 .trip-status .i-train {
-  /* height: 60rpx;
-  line-height: 60rpx;
-  border: 1rpx solid #CCC;
-  border-radius: 10rpx;
-  padding: 0 30rpx;
-  color: #CCC; */
   font-size: 70rpx;
 }
 
@@ -68,4 +69,25 @@
 
 .tips {
   padding: 10rpx 20rpx;
+}
+
+.train-detail {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.train-item-value {
+  margin-top: 30rpx;
+  color: #000;
+  font-weight: 666;
+}
+
+.trip-footer {
+  border-top: 1rpx solid #EEE;
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 30rpx;
 }
