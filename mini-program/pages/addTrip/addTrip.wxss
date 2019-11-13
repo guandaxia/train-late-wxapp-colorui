@@ -1,0 +1,59 @@
+/* mini-program/pages/addTrip/addTrip.wxss */
+input {
+  text-align: right;
+}
+
+.message-button{
+  width: 30rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.submit {
+  margin: 30rpx auto 0;
+  width: 80%;
+}
+
+.keyboard {
+  z-index: 1025;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #EAEAEA;
+}
+
+.letter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.letter-view {
+  border: solid 1rpx #EAEAEA;
+  margin: 10rpx;
+  background-color: #FFFFFF;
+  flex: 0 0 160rpx;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.key-number {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30rpx auto;
+}
+
+.number-view {
+  border: solid 1rpx #EAEAEA;
+  margin: 10rpx;
+  background-color: #FFFFFF;
+  flex: 0 0 150rpx;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}

@@ -18,10 +18,12 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"scopeDataCheck": true,
+		"bundle": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.4",
+	"libVersion": "2.9.3",
 	"appid": "wxe99ef1c0b88d7a7b",
 	"projectname": "train-late",
 	"debugOptions": {
@@ -48,6 +50,10 @@
 		},
 		"game": {
 			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -134,6 +140,33 @@
 					"id": -1,
 					"name": "代售点查询",
 					"pathName": "pages/sellTicket/sellTicket",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的行程",
+					"pathName": "pages/myTrip/myTrip",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "添加行程",
+					"pathName": "pages/addTrip/addTrip",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "历史行程",
+					"pathName": "pages/historyTrip/historyTrip",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "更新日志",
+					"pathName": "pages/updateLog/updateLog",
 					"scene": null
 				}
 			]

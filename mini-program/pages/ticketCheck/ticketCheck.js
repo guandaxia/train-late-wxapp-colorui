@@ -76,7 +76,7 @@ Page({
     })
     wx.showTabBar()
   },
-  clearInput () {
+  clearInput() {
     console.log('clear')
     this.setData({
       input: '',
@@ -85,7 +85,7 @@ Page({
       stationName: ''
     })
   },
-  bindKeyInput () {
+  bindKeyInput() {
     console.log('key input')
     let showKeyboard = this.data.showKeyboard
 
@@ -117,7 +117,7 @@ Page({
       console.log(res.result)
 
       let stationList = []
-      res.result.forEach(item=>{
+      res.result.forEach(item => {
         stationList.push(item.station_name)
       })
 
@@ -130,7 +130,7 @@ Page({
     }).catch(err => {
       wx.hideLoading()
     })
-    
+
   },
 
   hideKeyboard({ detail }) {
@@ -144,14 +144,14 @@ Page({
       date: e.detail.value
     })
   },
-  selectStation(e){
+  selectStation(e) {
     console.log(this.data.stationList[e.detail.value])
     this.setData({
       stationName: this.data.stationList[e.detail.value]
     })
   },
 
-  formSubmit({ detail}){
+  formSubmit({ detail }) {
     console.log(detail)
     let trainCode = detail.value.train_code
 
@@ -165,7 +165,7 @@ Page({
     }
 
     let stationName = this.data.stationName
-    if (!stationName){
+    if (!stationName) {
       wx.showToast({
         title: '车站为空',
         image: '/images/error.png'
@@ -185,9 +185,9 @@ Page({
     }).then(res => {
 
       console.log(res.result)
-      
+
       wx.hideLoading()
-      if(!res.result){
+      if (!res.result) {
         wx.showToast({
           title: '未找到检票口信息',
           icon: 'none'
@@ -201,6 +201,6 @@ Page({
       wx.hideLoading()
     })
 
-    
+
   }
 })

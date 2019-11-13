@@ -1,0 +1,56 @@
+<!--mini-program/pages/historyTrip/historyTrip.wxml-->
+<import src="../../template/empty/empty.wxml" /> 
+<cu-custom isCustom bgColor="bg-gradual-blue">
+  <view slot="content">历史行程</view>
+</cu-custom>
+<view wx:if="{{trainList.length > 0}}" class="trip-list">
+  <view wx:for="{{trainList}}" class="bg-white radius shadow-warp margin">
+    <view class="trip-header">
+      <view class="trip-number text-red">{{item.date}}</view>
+    </view>
+    <view class="station-info">
+      <view class="station">
+        <view class="station-name">{{item.start_station}}</view>
+        <view>{{item.start_time}}</view>
+      </view>
+      <view class="trip-status">
+        <view class="trip-status-text">{{item.train_code}}</view>
+        <!-- <view class="iconfont i-train"></view> -->
+        <view class="jiantou"></view>
+      </view>
+      <view class="station">
+        <view class="station-name">{{item.end_station}}</view>
+        <view>{{item.end_time}}</view>
+      </view>
+    </view>
+    <view class="train-detail">
+      <view class="">
+        <view>检票口</view>
+        <view class="train-item-value">{{item.ticket_check || '-'}}</view>
+      </view>
+      <view class="">
+        <view>车厢</view>
+        <view class="train-item-value">{{item.carriage || '-'}}</view>
+      </view>
+      <view class="">
+        <view>座席</view>
+        <view class="train-item-value">{{item.seat_type || '-'}}</view>
+      </view>
+      <view class="">
+        <view>座位</view>
+        <view class="train-item-value">{{item.seat_number || '-'}}</view>
+      </view>
+    </view>
+    <view class="trip-footer" bindtap="gotoTrainList" data-train-info="{{item}}">
+      <view>时刻表</view>
+      <view class="icon-right lg text-gray"></view>
+    </view>
+  </view>
+</view>
+<view wx:else>
+  <template is="empty" data="{{tips: '暂时没有历史行程'}}" />
+</view>
+<view class="margin-top-lg" wx:if="{{trainList.length > 0}}">
+<view class='line text-white'>以下就是广告了哦</view>
+<ad unit-id="adunit-844f305b20971487" ad-type="video" ad-theme="white"></ad>
+</view>

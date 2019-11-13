@@ -1,0 +1,128 @@
+<!-- mini-program/pages/addTrip/addTrip.wxml -->
+<cu-custom isCustom bgColor="bg-gradual-blue">
+  <view slot="backText">添加行程</view>
+</cu-custom>
+<view style="margin-top: {{showSeatInput ? '-430rpx': '0'}}" catchtap='pageTap'>
+  <form report-submit bindsubmit="formSubmit">
+    <view class="cu-form-group margin-top">
+      <view class="title">车次</view>
+      <input name="train_code" placeholder="请输入车次" catchtap="bindKeyInput" disabled value='{{input}}'></input>
+      <text class="icon-roundclosefill text-gray" wx-if="{{showClear}}" catchtap='clearInput'></text>
+    </view>
+    <view class="cu-form-group margin-top">
+      <view class="title">乘车日期</view>
+      <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="dateChange">
+        <view class="picker">{{date || '请选择乘车日期'}}</view>
+      </picker>
+    </view>
+    <view class="cu-form-group margin-top">
+      <view class="title">起点站</view>
+      <picker bindchange="selectStartStation" value="{{index}}" range="{{startStationList}}">
+        <view class="picker">{{startStationName || '请选择起点车站'}}</view>
+      </picker>
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">终点站</view>
+      <picker bindchange="selectEndStation" value="{{index}}" range="{{endStationList}}">
+        <view class="picker">{{endStationName || '请选择终点车站'}}</view>
+      </picker>
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="margin-top">
+      <text class="icon-title text-orange "></text>
+      以下为选填内容
+    </view>
+    <view class="cu-form-group margin-top-sm">
+      <view class="title">车厢</view>
+      <picker bindchange="selectCarriage" value="{{index}}" range="{{carriageList}}">
+        <view class="picker">{{carriage ? carriage+'车' : '请选择车厢号'}}</view>
+      </picker>
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">坐席</view>
+      <picker bindchange="selectSeatType" value="{{index}}" range="{{seatTypeList}}">
+        <view class="picker">{{seatType || '请选择坐席'}}</view>
+      </picker>
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">座位号</view>
+      <input name="seat_number" placeholder="请输入座位号" catchtap="inputSeatNumber" disabled value='{{seatNumber}}'></input>
+      <text>座</text>
+    </view>
+    <!-- <view bindtap="subscribeMessage" class="flex align-center margin-top margin-left text-gray">
+      <checkbox-group >
+        <checkbox value="subscribe"></checkbox>
+      </checkbox-group>
+      <view class="margin-left-sm">订阅车辆位置信息，发车前发送提醒</view>
+    </view> -->
+    <view class="submit">
+      <button type="primary" form-type="submit">提交</button>
+    </view>
+  </form>
+</view>
+<keyboard showKeyboard="{{showKeyboard}}" inputValue="{{input}}" bind:keyboardValue="keyboardValue" bind:hideKeyboard="hideKeyboard"></keyboard>
+<view class='keyboard' wx:if="{{showSeatInput}}">
+  <view class='letter'>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='A' catchtap='letterButton'>
+      A
+    </view>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='B' catchtap='letterButton'>
+      B
+    </view>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='C' catchtap='letterButton'>
+      C
+    </view>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='D' catchtap='letterButton'>
+      D
+    </view>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='E' catchtap='letterButton'>
+      E
+    </view>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='上' catchtap='letterButton'>
+      上铺
+    </view>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='中' catchtap='letterButton'>
+      中铺
+    </view>
+    <view class="letter-view" style="{{letterDisabled ? 'background-color: #DDD;' : ''}}" data-letter='下' catchtap='letterButton'>
+      下铺
+    </view>
+  </view>
+  <view class='key-number'>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='1' catchtap='numberButton'>
+      1
+    </view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='2' catchtap='numberButton'>
+      2
+    </view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='3' catchtap='numberButton'>
+      3
+    </view>
+    <view class='number-view' catchtap='delInput'>删除</view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='4' catchtap='numberButton'>
+      4
+    </view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='5' catchtap='numberButton'>
+      5
+    </view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='6' catchtap='numberButton'>
+      6
+    </view>
+    <view class="number-view" style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" class="letter-view" style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='0' catchtap='numberButton'>
+      0
+    </view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='7' catchtap='numberButton'>
+      7
+    </view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='8' catchtap='numberButton'>
+      8
+    </view>
+    <view class='number-view' style="{{numberDisabled ? 'background-color: #DDD;' : ''}}" data-number='9' catchtap='numberButton'>
+      9
+    </view>
+    <view class='number-view' catchtap='hideSeatInput'>确认</view>
+  </view>
+</view>

@@ -11,7 +11,7 @@
   </view>
   <view style='margin-top:80rpx'>
     <scroll-view style="position:absolute; top:210rpx; left:0; right:0; bottom:0;" scroll-with-animation="true" scroll-y="true" enable-back-to-top="true" bindscroll="scrollHandle" scroll-top="{{scrollTop}}" scroll-with-animation="true">
-      <view wx:for="{{stationList}}" wx:key="{{item.station_name}}" id="train-{{index}}">
+      <view wx:for="{{stationList}}" wx:key="station_name" id="train-{{index}}">
         <form report-submit bindsubmit="formSubmit">
           <input style='display:none;' name="station" value="{{item.station_name}}" />
           <input style='display:none;' name="index" value="{{index}}" />
@@ -48,7 +48,7 @@
     </scroll-view>
   </view>
   <!-- 返回顶部 -->
-  <view bindtap="goTop" class="widget-goTop" wx:if="{{floorstatus}}">
+  <view bindtap="goTop" class="widget-goTop {{animationClass}}">
     <text class="iconfont i-goto-top"></text>
   </view>
 </view>
