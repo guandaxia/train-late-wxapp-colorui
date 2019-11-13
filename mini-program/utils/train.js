@@ -9,8 +9,10 @@ function formatList(list) {
   list.forEach(item => {
     tmpList.push({
       station_name: item.station_name,
-      start_time: item.start_time.substr(0, 2) + ":" + item.start_time.substr(2),
-      arrive_time: item.arrive_time.substr(0, 2) + ":" + item.arrive_time.substr(2)
+      // start_time: item.start_time.substr(0, 2) + ":" + item.start_time.substr(2),
+      // arrive_time: item.arrive_time.substr(0, 2) + ":" + item.arrive_time.substr(2)
+      start_time: item.start_time,
+      arrive_time: item.arrive_time
     })
 
   })
@@ -21,15 +23,16 @@ function formatList(list) {
 }
 
 
-async function stationStopInfo(trainCode) {
+async function stationStopInfo(trainNo) {
   wx.showLoading()
   try {
     let { result } = await wx.cloud.callFunction({
       name: 'stationStopInfo',
       data: {
-        trainCode,
+        trainNo,
       }
     })
+    wx.hideLoading()
 
     if (result === "") {
       return {
@@ -40,7 +43,7 @@ async function stationStopInfo(trainCode) {
     console.log(result)
     let stationList = formatList(result)
     console.log(stationList)
-    wx.hideLoading()
+
     if (stationList.length == 0) {
       return {
         stationList: [],
@@ -70,14 +73,16 @@ async function getTrainNoByDb(trainCode) {
   const db = wx.cloud.database()
   let res = await db.collection('train_list').where({
     train_code: trainCode
-  }).get()
+  })
+    .orderBy('date', 'desc')
+    .get()
   if (res.data.length <= 0) {
-    throw Error()
+    return false
   }
   return res.data[0]
 }
 
-function getTrainNo(trainCode) {
+function getTrainNoByUrl(trainCode) {
   let url = 'https://search.12306.cn/search/v1/train/search'
 
   const year = new Date().getFullYear()
@@ -89,9 +94,7 @@ function getTrainNo(trainCode) {
   // trainCode = trainCode.toLowerCase()
   console.log(`${url}?keyword=${trainCode}&date=${date}`)
   return new Promise((resolve, reject) => {
-    wx.showLoading({
-      title: '加载中...'
-    })
+
     wx.request({
       url: `${url}?keyword=${trainCode}&date=${date}`,
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -101,7 +104,7 @@ function getTrainNo(trainCode) {
         let find = 0
         console.log(trainList)
         if (trainList.length == 0) {
-          resolve(getTrainNoByDb(trainCode))
+          reject({})
         }
         for (let i = 0; i < trainList.length; i++) {
           if (trainCode == trainList[i]['station_train_code']) {
@@ -116,22 +119,42 @@ function getTrainNo(trainCode) {
           }
         }
         if (find === 0) {
-          resolve(getTrainNoByDb(trainCode))
+          reject({})
         }
 
         resolve(trainInfo)
       },
       fail: function (err) {
         // fail
-        // reject(err)
-        resolve(getTrainNoByDb(trainCode))
+        reject(err)
       },
       complete: function () {
         // complete
-        wx.hideLoading()
+
       }
     })
   })
+
+}
+
+async function getTrainNo(trainCode) {
+  try {
+    wx.showLoading({
+      title: '加载中...'
+    })
+    let ret = await getTrainNoByDb(trainCode)
+
+    if (ret === false) {
+      ret = await getTrainNoByUrl(trainCode)
+    }
+
+    wx.hideLoading()
+    return ret
+  } catch (error) {
+    wx.hideLoading()
+
+    return false
+  }
 }
 
 module.exports = {

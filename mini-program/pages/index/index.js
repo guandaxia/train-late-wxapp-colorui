@@ -1,7 +1,7 @@
 //index.js
 // import {http} from '../../utils/http.js'
 import { checkTrainCode } from '../../utils/util.js'
-import { stationStopInfo } from '../../utils/train'
+import { stationStopInfo, getTrainNo } from '../../utils/train'
 //获取应用实例
 const app = getApp()
 let interstitialAd = null
@@ -107,7 +107,19 @@ Page({
         })
         return
       }
-      let result = await stationStopInfo(trainCode)
+      let trainInfo = await getTrainNo(trainCode)
+      console.log(trainInfo)
+      if (trainInfo === false) {
+        wx.showToast({
+          title: '未找到该车次',
+          image: '/images/error.png'
+        })
+        return false
+      }
+
+      let result = await stationStopInfo(trainInfo['train_no'])
+
+      // let result = await stationStopInfo(trainCode)
       console.log(result)
       if (result.stationList.length === 0) {
         wx.showToast({
@@ -120,6 +132,7 @@ Page({
 
       let historyInfo = {
         train_code: trainCode,
+        train_no: trainInfo['train_no'],
         start: result.start_station,
         end: result.end_station,
         list: []
@@ -203,7 +216,18 @@ Page({
     // console.log(e)
     let data = e.currentTarget.dataset.info
 
-    let result = await stationStopInfo(data.train_code)
+    let trainInfo = await getTrainNo(data.train_code)
+    console.log(trainInfo)
+    if (trainInfo === false) {
+      wx.showToast({
+        title: '未找到该车次',
+        image: '/images/error.png'
+      })
+      return false
+    }
+
+    let result = await stationStopInfo(trainInfo['train_no'])
+    // let result = await stationStopInfo(data.train_no)
     console.log(result)
     if (result.stationList.length === 0) {
       wx.showToast({
