@@ -48,7 +48,7 @@
     </scroll-view>
   </view>
   <!-- 返回顶部 -->
-  <view bindtap="goTop" class="widget-goTop" wx:if="{{floorstatus}}">
+  <view bindtap="goTop" class="widget-goTop {{animationClass}}">
     <text class="iconfont i-goto-top"></text>
   </view>
 </view>

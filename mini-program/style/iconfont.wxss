@@ -47,7 +47,6 @@
 
 .i-goto-top::before {
   content: "\e633";
-  color: #FC0D1B;
 }
 
 .i-train::before {

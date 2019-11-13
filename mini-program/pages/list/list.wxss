@@ -23,7 +23,7 @@ Page {
   bottom: 256rpx;
   z-index: 20;
   right: 12px;
-  background: rgba(210, 210, 210, 0.9);
+  background: rgba(224, 224, 224, 0.9);
   width: 76rpx;
   height: 76rpx;
   border-radius: 76rpx;
@@ -31,9 +31,47 @@ Page {
 }
 
 .widget-goTop .i-goto-top {
-  color: #666;
+  color: #FC0D1B;
   display: block;
   text-align: center;
   line-height: 76rpx;
   font-size: 32rpx;
+}
+
+.hide{
+  opacity: 0;
+}
+
+.animation-fade {
+  animation-fill-mode: both;
+  animation-name: fade;
+  animation-duration: .8s;
+  animation-timing-function: linear;
+}
+
+.animation-fade-out {
+  animation-fill-mode: both;
+  animation-name: fade-out;
+  animation-duration: .8s;
+  animation-timing-function: linear;
+}
+
+@keyframes fade {
+  0% {
+      opacity: 0
+  }
+
+  100% {
+      opacity: 1
+  }
+}
+
+@keyframes fade-out {
+  0% {
+      opacity: 1
+  }
+
+  100% {
+      opacity: 0
+  }
 }

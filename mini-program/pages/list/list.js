@@ -13,6 +13,7 @@ Page({
     trainCode: '列车时刻表',
     stationList: [],
     CustomBar: app.globalData.CustomBar,
+    animationClass: 'hide',
   },
 
   /**
@@ -64,13 +65,17 @@ Page({
   },
 
   scrollHandle(t) {
-
     scrollTop = t.detail.scrollTop
     // console.log(scrollTop)
-    let floorstatus = scrollTop > 300 ? 1 : 0
-
+    let animationClass = this.data.animationClass
+    if (scrollTop > 300){
+      animationClass = 'animation-fade'
+    }else if(animationClass != 'hide'){
+      // 防止出现闪动
+      animationClass = 'animation-fade-out'
+    }
     this.setData({
-      floorstatus
+      animationClass,
     })
   },
 
