@@ -18,10 +18,12 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"scopeDataCheck": true,
+		"bundle": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.4",
+	"libVersion": "2.9.3",
 	"appid": "wxe99ef1c0b88d7a7b",
 	"projectname": "train-late",
 	"debugOptions": {
@@ -153,6 +155,18 @@
 					"name": "添加行程",
 					"pathName": "pages/addTrip/addTrip",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "历史行程",
+					"pathName": "pages/historyTrip/historyTrip",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "更新日志",
+					"pathName": "pages/updateLog/updateLog",
 					"scene": null
 				}
 			]

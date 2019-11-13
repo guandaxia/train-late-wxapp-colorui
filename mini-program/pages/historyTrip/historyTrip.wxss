@@ -1,4 +1,4 @@
-/* mini-program/pages/myTrip/myTrip.wxss */
+/* mini-program/pages/historyTrip/historyTrip.wxss */
  @import "../../template/empty/empty.wxss"; 
 
 .trip-info {

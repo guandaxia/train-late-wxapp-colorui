@@ -11,7 +11,8 @@
     "pages/sellTime/sellTime",
     "pages/sellTicket/sellTicket",
     "pages/myTrip/myTrip",
-    "pages/addTrip/addTrip"
+    "pages/addTrip/addTrip",
+    "pages/historyTrip/historyTrip"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,20 +26,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/images/tabbar/basics.png",
-        "selectedIconPath": "/images/tabbar/basics_cur.png"
+        "iconPath": "/images/tabbar/home.png",
+        "selectedIconPath": "/images/tabbar/home-selected.png"
       },
       {
         "pagePath": "pages/myTrip/myTrip",
         "text": "行程",
-        "iconPath": "/images/tabbar/basics.png",
-        "selectedIconPath": "/images/tabbar/basics_cur.png"
+        "iconPath": "/images/tabbar/trip.png",
+        "selectedIconPath": "/images/tabbar/trip-selected.png"
       },
       {
         "pagePath": "pages/home/home",
         "text": "常用",
-        "iconPath": "/images/tabbar/plugin.png",
-        "selectedIconPath": "/images/tabbar/plugin_cur.png"
+        "iconPath": "/images/tabbar/use.png",
+        "selectedIconPath": "/images/tabbar/use-selected.png"
       }
     ]
   },
