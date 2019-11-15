@@ -28,7 +28,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   async onShow() {
-    await this.query()
+    this.queryUnTravel()
+    this.queryTravel()
   },
 
   /**
@@ -59,22 +60,41 @@ Page({
 
   },
 
-  async query() {
+  // 查询未出行订单
+  async queryUnTravel() {
 
     const db = wx.cloud.database()
     const _ = db.command
-    let openid = getApp().globalData.openid
-
     let res = await db.collection('my_trip').where({
-      date_obj: _.gte(new Date())
+      start_date_obj: _.gte(new Date())
     }).get()
     console.log(res)
-    let trainList = res.data || []
-    console.log(trainList)
-    trainList = this.formatList(trainList)
-    console.log(trainList)
+    let unTravelList = res.data || []
+    console.log(unTravelList)
+    unTravelList = this.formatList(unTravelList)
+    console.log(unTravelList)
     this.setData({
-      trainList
+      unTravelList
+    })
+
+  },
+
+  // 查询正在行驶订单
+  async queryTravel() {
+
+    const db = wx.cloud.database()
+    const _ = db.command
+    let res = await db.collection('my_trip').where({
+      start_date_obj: _.lte(new Date()),
+      end_date_obj: _.gte(new Date()),
+    }).get()
+    console.log(res)
+    let travelList = res.data || []
+    console.log(travelList)
+    // travelList = this.formatList(travelList)
+    console.log(travelList)
+    this.setData({
+      travelList
     })
 
   },
@@ -122,11 +142,11 @@ Page({
   },
 
   gotoTrainList(e){
-    console.log(e.currentTarget.dataset.trainInfo)
-    let trainInfo = e.currentTarget.dataset.trainInfo
+    console.log(e.currentTarget.dataset)
+    let dataset = e.currentTarget.dataset
 
-    getApp().globalData.stationStopList = trainInfo.station_list
-    let trainCode = trainInfo.train_code
+    getApp().globalData.stationStopList = dataset.stationList
+    let trainCode = dataset.trainCode
 
     wx.navigateTo({
       url: `/pages/list/list?id=${trainCode}`,

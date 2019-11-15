@@ -64,7 +64,7 @@ Page({
     let openid = getApp().globalData.openid
 
     let res = await db.collection('my_trip').where({
-      date_obj: _.lt(new Date())
+      end_date_obj: _.lt(new Date())
     }).get()
     // console.log(res)
     let trainList = res.data || []

@@ -170,6 +170,7 @@ Page({
 
     insertData['start_station'] = startStationList[index]
     insertData['start_time'] = insertData['station_list'][index]['start_time']
+    insertData['start_arrive_day_diff'] = insertData['station_list'][index]['arrive_day_diff']
 
   },
   selectEndStation(e) {
@@ -184,7 +185,7 @@ Page({
     })
     insertData['end_station'] = endStationList[index]
     insertData['end_time'] = info['arrive_time']
-
+    insertData['end_arrive_day_diff'] = info['arrive_day_diff']
   },
 
   async queryTicketCheck(trainCode, date, stationName) {
@@ -268,38 +269,33 @@ Page({
       return
     }
 
-    let openid = getApp().globalData.openid
-    if (openid) {
-      let res = await collection.where({
-        train_code: trainCode,
-        date: insertData['date'],
-      }).get()
-      console.log(res)
-      if (res.data.length > 0) {
-        let that = this
-        wx.showModal({
-          content: `已经存在${insertData['date']}的${trainCode}车次，是否继续`,
-          showCancel: true,
-          success(res) {
-            console.log(res)
-            if (res.confirm) {
-              that.saveTrip(trainCode)
-            }
+    // 检查是否有相同日期和车次
+    let res = await collection.where({
+      train_code: trainCode,
+      date: insertData['date'],
+    }).get()
+    if (res.data.length > 0) {
+      let that = this
+      wx.showModal({
+        content: `已经存在${insertData['date']}的${trainCode}车次，是否继续`,
+        showCancel: true,
+        success(res) {
+          console.log(res)
+          if (res.confirm) {
+            that.saveTrip(trainCode)
           }
-        })
-      } else {
-        this.saveTrip(trainCode)
-      }
+        }
+      })
+    } else {
+      this.saveTrip(trainCode)
     }
 
   },
 
   async saveTrip(trainCode) {
     wx.showLoading({
-      title: '数据加载中'
+      title: '添加中...'
     })
-
-
 
     let ticketCheck = await this.queryTicketCheck(trainCode, insertData['date'], insertData['start_station'])
     console.log(ticketCheck)
@@ -315,12 +311,20 @@ Page({
 
     console.log(insertData)
 
-    let openid = getApp().globalData.openid
     let dateObj = new Date(insertData['date'] + ' ' + insertData['start_time'])
+    let diffDay = insertData['end_arrive_day_diff'] - insertData['start_arrive_day_diff']
+
+    let endDateObj = new Date(dayjs(dateObj).add(diffDay, 'day').format('YYYY-MM-DD') + ' ' + insertData['end_time'])
+    let diffTime = dayjs(endDateObj).diff(dateObj, 'minute')
+    let diffHour = parseInt(diffTime / 60)
+    let diffMinute = diffTime % 60
     let res = await collection.add({
       // data 字段表示需新增的 JSON 数据
       data: {
-        date_obj: dateObj,
+        start_date_obj: dateObj,  //开始时间
+        end_date_obj: endDateObj, // 结束时间
+        diff_hour: diffHour,      // 历时
+        diff_minute: diffMinute,  // 历时
         date: insertData['date'],
         train_code: insertData['train_code'],
         start_station: insertData['start_station'],
@@ -373,8 +377,6 @@ Page({
       seatNumber: input,
       numberDisabled: true
     })
-
-
   },
   // 数字按键
   numberButton(event) {
