@@ -1,77 +1,40 @@
 <!-- mini-program/pages/myTrip/myTrip.wxml -->
 <import src="../../template/empty/empty.wxml" /> 
+<import src="../../template/trip/trip.wxml" />
 
 <cu-custom bgColor="bg-gradual-blue">
   <view slot="content">我的行程</view>
 </cu-custom>
+<block wx:if="{{travelList.length>0}}">
+<view class="margin">
+  <text class="icon-title text-orange "></text>
+  正在行驶
+</view>
+<view class="trip-list margin-bottom">
+  <view wx:for="{{travelList}}" class="bg-white radius shadow-warp margin">
+    <template is="trip" data="{{...item}}" />
+  </view>
+</view>
+</block>
+<block wx:if="{{unTravelList.length>0}}">
 <view class="margin">
   <text class="icon-title text-orange "></text>
   未出行行程
 </view>
-<view wx:if="{{trainList.length > 0}}" class="trip-list">
-  <view wx:for="{{trainList}}" class="bg-white radius shadow-warp margin">
-    <view class="trip-header">
-      <view class="trip-number text-red">{{item.date}}</view>
-      <view>
-        <view>剩余{{item.remain_time}}</view>
-      </view>
-    </view>
-    <view class="station-info">
-      <view class="station">
-        <view class="station-name">{{item.start_station}}</view>
-        <view>{{item.start_time}}</view>
-        <!-- <view>预计20:00发车</view> -->
-      </view>
-      <view class="trip-status">
-        <view class="trip-status-text">{{item.train_code}}</view>
-        <!-- <view class="iconfont i-train"></view> -->
-        <view class="jiantou"></view>
-      </view>
-      <view class="station">
-        <view class="station-name">{{item.end_station}}</view>
-        <view>{{item.end_time}}</view>
-        <!-- <view>预计20:00到达</view> -->
-      </view>
-    </view>
-    <view class="train-detail">
-      <view class="">
-        <view>检票口</view>
-        <view class="train-item-value">{{item.ticket_check || '-'}}</view>
-      </view>
-      <view class="">
-        <view>车厢</view>
-        <view class="train-item-value">{{item.carriage || '-'}}</view>
-      </view>
-      <view class="">
-        <view>座席</view>
-        <view class="train-item-value">{{item.seat_type || '-'}}</view>
-      </view>
-      <view class="">
-        <view>座位</view>
-        <view class="train-item-value">{{item.seat_number || '-'}}</view>
-      </view>
-    </view>
-    <view class="trip-footer" bindtap="gotoTrainList" data-train-info="{{item}}">
-      <view>时刻表</view>
-      <view class="icon-right lg text-gray"></view>
-    </view>
-    <!-- <view class="tips">
-      目前
-      <text class="text-red">晚点20分钟</text>
-      ，已到达
-      <text class="text-red">郑州</text>
-      站
-    </view> -->
+<view class="trip-list">
+  <view wx:for="{{unTravelList}}" class="bg-white radius shadow-warp margin">
+    <template is="trip" data="{{...item}}" />
   </view>
 </view>
-<view wx:else>
+</block>
+<view wx:if="{{unTravelList.length == 0 && travelList.length ==0}}">
   <template is="empty" data="{{tips: '暂时没有未出行行程'}}" />
 </view>
-<navigator open-type="navigate" url="/pages/addTrip/addTrip" hover-class="none" class="bg-white radius margin padding flex justify-between">
+<navigator open-type="navigate" url="/pages/addTrip/addTrip" hover-class="none" class="bg-white radius margin padding-sm flex justify-between">
   <view>添加行程</view>
   <view class="icon-right lg text-gray"></view>
 </navigator>
-<navigator open-type="navigate" url="/pages/historyTrip/historyTrip" hover-class="none" class="bg-white radius margin padding flex justify-between">
+<navigator open-type="navigate" url="/pages/historyTrip/historyTrip" hover-class="none" class="bg-white radius margin padding-sm flex justify-between">
   <view>历史行程</view>
   <view class="icon-right lg text-gray"></view>
 </navigator>

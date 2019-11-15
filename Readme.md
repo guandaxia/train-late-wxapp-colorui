@@ -95,3 +95,16 @@
 ![](http://picture.guansixu.cn/20191113151018.png)
 ![](http://picture.guansixu.cn/20191113151043.png)
 ![](http://picture.guansixu.cn/20191113151055.png)
+
+
+#### 七、 3.1.0 版本
+
+更新日期： 2019.11
+
+更新内容：
+
+1. 优化我的行程页面，增加正在进行中的行程
+
+截图:
+
+![](http://picture.guansixu.cn/20191115152405.png)

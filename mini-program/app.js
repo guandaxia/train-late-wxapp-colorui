@@ -50,18 +50,17 @@ App({
       }
     })
 
-    wx.cloud.callFunction({
-      name: 'login',
-    }).then(res => {
-      console.log(res.result)
-      this.globalData.openid = res.result.openid
+    // wx.cloud.callFunction({
+    //   name: 'login',
+    // }).then(res => {
+    //   console.log(res.result)
+    //   this.globalData.openid = res.result.openid
 
-    }).catch(err => {
-    })
+    // }).catch(err => {
+    // })
   },
   globalData: {
     userInfo: null,
-    openid: '',
     selectStartStation: '',
     selectEndStation: '',
     stationTrainList: [],

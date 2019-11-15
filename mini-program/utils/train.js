@@ -12,7 +12,8 @@ function formatList(list) {
       // start_time: item.start_time.substr(0, 2) + ":" + item.start_time.substr(2),
       // arrive_time: item.arrive_time.substr(0, 2) + ":" + item.arrive_time.substr(2)
       start_time: item.start_time,
-      arrive_time: item.arrive_time
+      arrive_time: item.arrive_time,
+      arrive_day_diff: item.arrive_day_diff
     })
 
   })
