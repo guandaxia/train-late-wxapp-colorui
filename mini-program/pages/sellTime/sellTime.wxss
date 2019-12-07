@@ -7,3 +7,7 @@ Page{
 .content {
   flex: 1;
 }
+
+input {
+  text-align: right;
+}
