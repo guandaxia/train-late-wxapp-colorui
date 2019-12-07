@@ -43,7 +43,7 @@
         <view>3. 本功能及查询结果仅作为参考，准确信息以车站公告为准</view>
       </view>
       <view class='margin-top' wx:if="{{stationList.length}}">
-        <ad unit-id="adunit-e27e69b0b57f1116"></ad>
+        <ad unit-id="adunit-1701b160153cbdf0" ad-type="video" ad-theme="white"></ad>
       </view>
     </scroll-view>
   </view>

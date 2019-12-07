@@ -10,13 +10,31 @@
         <input name="station" placeholder="请选择车站" catchtap="bindKeyInput" disabled value='{{station.stationName}}'></input>
         <text class="icon-right text-gray"></text>
       </view>
+      <view class="cu-form-group margin-top">
+        <view class="title">乘车日期</view>
+        <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="dateChange">
+          <view class="picker">{{date || '请选择乘车日期'}}</view>
+        </picker>
+      </view>
+      <!-- <view bindtap="subscribeMessage" class="flex align-center margin-top margin-left text-gray">
+        <checkbox-group bindchange="subscribeChange">
+          <checkbox value="subscribe"></checkbox>
+        </checkbox-group>
+        <view class="margin-left-sm">订阅购票提醒，购买前半小时发送提醒</view>
+      </view> -->
       <view class="padding">
         <button class="cu-btn block bg-green margin-tb-sm lg" form-type="submit">查询</button>
       </view>
     </form>
   </view>
 
-  <view class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
+  <view wx:if="{{stationList.length > 0}}" class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
+    <view class="cu-item">
+      <view class="content">购买日期</view>
+      <view class="action">
+        <view>{{sellDate}}</view>
+      </view>
+    </view>
     <view class="cu-item" wx:for="{{stationList}}" wx:key="{{item._id}}">
       <view class="content">
         <text class="text-grey">{{item.station_name}}</text>
@@ -29,5 +47,5 @@
 </view>
 
 <view class='margin-top'>
-  <ad unit-id="adunit-d70e7f630e07ced1"></ad>
+  <ad unit-id="adunit-da3e5b08484306f2" ad-type="video" ad-theme="white"></ad>
 </view>

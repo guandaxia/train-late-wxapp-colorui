@@ -15,24 +15,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 在页面onLoad回调事件中创建插屏广告实例
-    if (wx.createInterstitialAd) {
-      interstitialAd = wx.createInterstitialAd({
-        adUnitId: 'adunit-032802b5ea274bdd'
-      })
-      interstitialAd.onLoad(() => { })
-      interstitialAd.onError((err) => { })
-      interstitialAd.onClose(() => { })
-    }
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    interstitialAd.show().catch((err) => {
-      console.error(err)
-    })
+ 
   },
 
   /**
