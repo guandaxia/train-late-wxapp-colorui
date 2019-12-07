@@ -41,10 +41,8 @@ Page({
 
     this.pageData.selectDay = this.data.day
 
-    const days_count = new Date(this.data.year, this.data.month, 0).getDate()
+    // const days_count = new Date(this.data.year, this.data.month, 0).getDate()
     let daysStyle = this.setDaysStyle(this.data.year, this.data.month, this.data.day)
-
-    
 
     this.setData({
       days_style: daysStyle,

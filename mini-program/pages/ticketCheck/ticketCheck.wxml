@@ -37,7 +37,7 @@
 </view>
 <view class='ad-info'>
 <!-- <view class='line'>以下就是广告了哦</view> -->
-<ad unit-id="adunit-cde55deae650318c"></ad>
+<ad unit-id="adunit-1f8a91715f67728c" ad-type="video" ad-theme="white"></ad>
 </view>
 
  <keyboard showKeyboard="{{showKeyboard}}"  inputValue="{{input}}" bind:keyboardValue="keyboardValue" bind:hideKeyboard="hideKeyboard"></keyboard>
